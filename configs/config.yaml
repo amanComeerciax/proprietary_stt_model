@@ -1,0 +1,82 @@
+# ============================================================
+# Our STT Model — Master Configuration
+# ============================================================
+
+project:
+  name: "our-stt-model"
+  version: "0.1.0"
+  description: "Proprietary Multilingual Speech-to-Text Model"
+  languages:
+    - "en"   # English
+    - "hi"   # Hindi
+    - "gu"   # Gujarati
+
+audio:
+  sample_rate: 16000
+  mono: true
+  max_duration_seconds: 30.0
+  min_duration_seconds: 0.5
+
+features:
+  type: "log_mel"            # log_mel | mfcc
+  n_mels: 80
+  n_fft: 400
+  hop_length: 160
+  win_length: 400
+  f_min: 0.0
+  f_max: 8000.0
+  normalize: true
+
+tokenizer:
+  type: "character"          # character | bpe | sentencepiece
+  vocab_size: 512
+  pad_token: "<PAD>"
+  sos_token: "<SOS>"
+  eos_token: "<EOS>"
+  unk_token: "<UNK>"
+
+model:
+  encoder:
+    input_dim: 80            # Must match n_mels
+    hidden_dim: 256
+    num_layers: 4
+    num_heads: 4
+    dropout: 0.1
+    conv_channels: 256
+    conv_kernel_size: 3
+
+  attention:
+    type: "multi_head"       # multi_head | location_aware
+    num_heads: 4
+    hidden_dim: 256
+
+  decoder:
+    vocab_size: 512           # Must match tokenizer.vocab_size
+    embedding_dim: 256
+    hidden_dim: 256
+    num_layers: 2
+    dropout: 0.1
+
+training:
+  batch_size: 16
+  num_epochs: 100
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  warmup_steps: 1000
+  max_grad_norm: 5.0
+  scheduler: "cosine"        # cosine | step | plateau
+  early_stopping_patience: 10
+  checkpoint_dir: "checkpoints/"
+  log_dir: "logs/"
+
+evaluation:
+  beam_width: 5
+  metrics:
+    - "wer"                  # Word Error Rate
+    - "cer"                  # Character Error Rate
+
+inference:
+  device: "cpu"              # cpu | cuda | mps
+  beam_width: 5
+  max_decode_length: 300
+  temperature: 1.0

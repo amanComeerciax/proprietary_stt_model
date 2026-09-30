@@ -1,0 +1,70 @@
+# ============================================================
+# Our STT Model — .gitignore
+# ============================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# --- Virtual Environments ---
+venv/
+env/
+.venv/
+.env/
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Jupyter / Colab ---
+.ipynb_checkpoints/
+*.ipynb
+
+# --- Model Checkpoints & Weights ---
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+checkpoints/
+saved_models/
+
+# --- Large Audio Files ---
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+
+# --- Datasets (do not commit large data) ---
+data/raw/
+data/processed/
+
+# --- Logs ---
+logs/
+*.log
+runs/
+wandb/
+
+# --- Misc ---
+*.tar.gz
+*.zip
+*.7z
+.env
+*.pickle
+*.pkl
