@@ -44,14 +44,9 @@ env/
 checkpoints/
 saved_models/
 
-# --- Large Audio Files ---
-*.wav
-*.mp3
-*.flac
-*.ogg
-*.m4a
-
-# --- Datasets (do not commit large data) ---
+# --- Datasets (do not commit large audio/data files) ---
+# The actual audio files live inside these directories.
+# They are intentionally ignored because they are too large for Git.
 data/raw/
 data/processed/
 
@@ -61,6 +56,10 @@ logs/
 runs/
 wandb/
 
+# --- Preprocessing temp files ---
+*.tmp
+*.bak
+
 # --- Misc ---
 *.tar.gz
 *.zip
@@ -68,3 +67,4 @@ wandb/
 .env
 *.pickle
 *.pkl
+

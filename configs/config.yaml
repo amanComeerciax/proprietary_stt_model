@@ -14,7 +14,7 @@ project:
 audio:
   sample_rate: 16000
   mono: true
-  max_duration_seconds: 30.0
+  max_duration_seconds: 100.0
   min_duration_seconds: 0.5
 
 features:
