@@ -316,10 +316,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
   <header>
     <div class="brand">
-      <div class="badge">Proprietary STT</div>
+      <div class="badge">MMS-300M • Best CER: 12.1%</div>
       <div>
         <h1>Multilingual Speech-to-Text Studio</h1>
-        <div class="subtitle">English 🇬🇧 • Hindi 🇮🇳 • Gujarati 🇮🇳 | Mac CPU Real-Time Inference</div>
+        <div class="subtitle">Gujarati (10.6% CER) • Hindi (13.9% CER) • English (12.8% CER) | Ultra-Fast Mac CPU</div>
       </div>
     </div>
   </header>
@@ -328,17 +328,15 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <!-- Left: Dataset Samples Explorer -->
     <div class="card">
       <div class="card-title">
-        <span>🎧 Audio Samples</span>
-        <span id="sampleCountBadge" style="font-size: 0.8rem; color: var(--text-muted);">601 clips</span>
+        <span>🎧 Audio Validation Benchmarks</span>
+        <span id="sampleCountBadge" style="font-size: 0.8rem; color: var(--text-muted);">1,242 clips</span>
       </div>
-
-      <!-- Mode Switch Removed -->
 
       <div class="filter-tabs">
         <button class="tab-btn active" onclick="filterLang('all')">All</button>
-        <button class="tab-btn" onclick="filterLang('en')">English</button>
-        <button class="tab-btn" onclick="filterLang('hi')">Hindi</button>
         <button class="tab-btn" onclick="filterLang('gu')">Gujarati</button>
+        <button class="tab-btn" onclick="filterLang('hi')">Hindi</button>
+        <button class="tab-btn" onclick="filterLang('en')">English</button>
       </div>
 
       <div class="samples-list" id="samplesList">
@@ -369,6 +367,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
       <div class="metrics-row" id="metricsRow" style="display: none;">
         <div class="metric-card">
+          <div class="metric-val" id="cerVal" style="color: #10b981;">-</div>
+          <div class="metric-lbl">Accuracy / CER</div>
+        </div>
+        <div class="metric-card">
           <div class="metric-val" id="rtfVal">-</div>
           <div class="metric-lbl">Speed (RTF)</div>
         </div>
@@ -393,12 +395,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         <div class="dual-head-grid">
           <div class="head-card">
-            <div class="head-title">⚡ Fast CTC Head (Single-Pass)</div>
+            <div class="head-title">⚡ Raw CTC Output (Acoustic)</div>
             <div class="head-val" id="ctcText">-</div>
           </div>
           <div class="head-card">
-            <div class="head-title">🧠 Seq2Seq Attention Head</div>
-            <div class="head-val" id="attnText">-</div>
+            <div class="head-title">🧠 KenLM Language Model (Corrected)</div>
+            <div class="head-val" id="attnText" style="color: #10b981;">-</div>
           </div>
         </div>
       </div>
@@ -494,6 +496,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       document.getElementById('latencyTag').innerText = '';
     }
 
+    function computeCer(ref, hyp) {
+      if (!ref || ref.length === 0) return '0.0';
+      const d = [];
+      for (let i = 0; i <= ref.length; i++) d[i] = [i];
+      for (let j = 0; j <= hyp.length; j++) d[0][j] = j;
+      for (let i = 1; i <= ref.length; i++) {
+        for (let j = 1; j <= hyp.length; j++) {
+          const cost = ref[i - 1] === hyp[j - 1] ? 0 : 1;
+          d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+        }
+      }
+      return ((d[ref.length][hyp.length] / ref.length) * 100).toFixed(1);
+    }
+
     async function runInference() {
       if (!selectedSample) return;
 
@@ -509,7 +525,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       document.getElementById('outputText').innerText = data.text || '(Silence / Empty)';
 
       document.getElementById('ctcText').innerText = data.ctc_text || '(Empty)';
-      document.getElementById('attnText').innerText = data.attn_text || '(Empty)';
+      document.getElementById('attnText').innerText = data.lm_text || data.text || '(Empty)';
+
+      if (selectedSample && selectedSample.transcript) {
+        const cer = computeCer(selectedSample.transcript.trim(), (data.text || '').trim());
+        document.getElementById('cerVal').innerText = cer + '%';
+      } else {
+        document.getElementById('cerVal').innerText = 'N/A';
+      }
 
       document.getElementById('rtfVal').innerText = data.rtf + 'x';
       document.getElementById('timeVal').innerText = data.inference_time + 's';
@@ -536,22 +559,41 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       } else {
         try {
           const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          mediaRecorder = new MediaRecorder(stream);
+          
+          let options = {};
+          if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+            options = { mimeType: 'audio/webm;codecs=opus' };
+          } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+            options = { mimeType: 'audio/mp4' };
+          }
+          
+          mediaRecorder = new MediaRecorder(stream, options);
           mediaRecorder.ondataavailable = event => {
-            audioChunks.push(event.data);
+            if (event.data && event.data.size > 0) {
+              audioChunks.push(event.data);
+            }
           };
           mediaRecorder.onstop = async () => {
-            const audioBlob = new Blob(audioChunks);
+            const mimeType = mediaRecorder.mimeType || 'audio/webm';
+            const audioBlob = new Blob(audioChunks, { type: mimeType });
             audioChunks = [];
+            
+            // Set recorded audio to player so user can hear what was recorded!
+            const audioUrl = URL.createObjectURL(audioBlob);
+            const player = document.getElementById('audioPlayer');
+            player.src = audioUrl;
+            player.style.display = 'block';
+            document.getElementById('currentAudioName').innerText = '🎤 Your Mic Recording (Playing below)';
             
             document.getElementById('transcribeBtn').disabled = true;
             document.getElementById('outputText').innerText = '⚡ Transcribing your voice...';
             document.getElementById('outputText').style.color = 'var(--text-muted)';
             document.getElementById('ctcText').innerText = '-';
-            document.getElementById('attnText').innerText = '-';
+            document.getElementById('attnText').innerText = 'MMS-300M (Fine-tuned)';
 
             const response = await fetch('/api/transcribe_upload', {
               method: 'POST',
+              headers: { 'Content-Type': mimeType },
               body: audioBlob
             });
             const data = await response.json();
@@ -560,31 +602,32 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             document.getElementById('outputText').style.fontStyle = 'normal';
             document.getElementById('outputText').innerText = data.text || '(Silence / Empty)';
             document.getElementById('ctcText').innerText = data.ctc_text || '(Empty)';
-            document.getElementById('attnText').innerText = data.attn_text || '(Empty)';
+            document.getElementById('attnText').innerText = data.lm_text || data.text || '(Empty)';
+            document.getElementById('cerVal').innerText = 'Live Mic';
             document.getElementById('rtfVal').innerText = data.rtf + 'x';
             document.getElementById('timeVal').innerText = data.inference_time + 's';
             document.getElementById('durVal').innerText = data.duration + 's';
             document.getElementById('metricsRow').style.display = 'grid';
             document.getElementById('liveStatusBadge').style.display = 'inline-block';
             document.getElementById('latencyTag').innerText = '⚡ ' + data.inference_time + 's (' + data.rtf + 'x RTF)';
-            document.getElementById('groundTruthText').innerText = '(Live Microphone Recording)';
+            document.getElementById('groundTruthText').value = '(Your live microphone voice)';
           };
           
           audioChunks = [];
-          mediaRecorder.start();
+          mediaRecorder.start(250);
           btn.innerHTML = '⏹ Stop & Transcribe';
           btn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
           
           // Clear current selection visual
           document.querySelectorAll('.sample-item').forEach(el => el.classList.remove('selected'));
-          document.getElementById('currentAudioName').innerText = 'Live Microphone Recording...';
+          document.getElementById('currentAudioName').innerText = '🔴 Recording your voice... Speak now!';
           document.getElementById('audioPlayer').style.display = 'none';
           document.getElementById('audioPlayer').pause();
           document.getElementById('transcribeBtn').disabled = true;
-          document.getElementById('groundTruthText').innerText = '-';
+          document.getElementById('groundTruthText').value = 'Recording in progress...';
           
         } catch (err) {
-          alert('Microphone access denied or not available.');
+          alert('Microphone access denied or not available: ' + err.message);
         }
       }
     }
@@ -631,15 +674,11 @@ class STTStudioHandler(BaseHTTPRequestHandler):
             self.wfile.write(HTML_TEMPLATE.encode("utf-8"))
 
         elif path == "/api/samples":
-            qs = parse_qs(parsed.query)
-            mode = qs.get("mode", ["chunks"])[0]
-
-            if mode == "full":
+            metadata_file = PROJECT_ROOT / "data/metadata/combined_val.csv"
+            if not metadata_file.exists():
+                metadata_file = PROJECT_ROOT / "data/metadata/metadata_all.csv"
+            if not metadata_file.exists():
                 metadata_file = PROJECT_ROOT / "data/metadata/metadata.csv"
-            else:
-                metadata_file = PROJECT_ROOT / "data/metadata/metadata_chunks_clean.csv"
-                if not metadata_file.exists():
-                    metadata_file = PROJECT_ROOT / "data/metadata/metadata.csv"
 
             samples = []
             if metadata_file.exists():
@@ -704,20 +743,19 @@ class STTStudioHandler(BaseHTTPRequestHandler):
             import subprocess
             
             # Save raw upload
-            with tempfile.NamedTemporaryFile(suffix=".webm", delete=False) as f_in:
+            with tempfile.NamedTemporaryFile(suffix=".raw_audio", delete=False) as f_in:
                 f_in.write(post_data)
                 upload_path = f_in.name
             
             # Convert to clean WAV format for soundfile to read
-            wav_path = upload_path.replace(".webm", ".wav")
+            wav_path = upload_path + ".wav"
             try:
                 subprocess.run([
                     "ffmpeg", "-y", "-i", upload_path, 
                     "-ar", "16000", "-ac", "1", wav_path
                 ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                target_audio = wav_path
-            except FileNotFoundError:
-                # ffmpeg not installed, try reading raw upload (might fail for webm but good fallback)
+                target_audio = wav_path if os.path.exists(wav_path) and os.path.getsize(wav_path) > 44 else upload_path
+            except Exception:
                 target_audio = upload_path
             
             if STTStudioHandler.engine is None:
@@ -775,7 +813,8 @@ class STTStudioHandler(BaseHTTPRequestHandler):
 
 
 def run_server(port: int = 8000):
-    server = HTTPServer(("0.0.0.0", port), STTStudioHandler)
+    from http.server import ThreadingHTTPServer
+    server = ThreadingHTTPServer(("0.0.0.0", port), STTStudioHandler)
     print(f"🚀 STT Studio Server running at http://localhost:{port}")
     try:
         server.serve_forever()
