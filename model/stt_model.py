@@ -40,29 +40,29 @@ class STTModel(nn.Module):
         self,
         encoder_config: Optional[Dict[str, Any]] = None,
         decoder_config: Optional[Dict[str, Any]] = None,
-        ctc_weight: float = 0.5,
+        ctc_weight: float = 0.7,
     ) -> None:
         super().__init__()
 
         # Default configurations if not provided
         enc_cfg = {
             "input_dim": 80,
-            "hidden_dim": 256,
-            "num_layers": 4,
+            "hidden_dim": 128,
+            "num_layers": 3,
             "num_heads": 4,
-            "dropout": 0.1,
-            "conv_channels": 256,
+            "dropout": 0.2,
+            "conv_channels": 128,
         }
         if encoder_config:
             enc_cfg.update(encoder_config)
 
         dec_cfg = {
             "vocab_size": 207,
-            "embedding_dim": 256,
-            "hidden_dim": 256,
+            "embedding_dim": 128,
+            "hidden_dim": 128,
             "num_layers": 2,
             "num_heads": 4,
-            "dropout": 0.1,
+            "dropout": 0.2,
         }
         if decoder_config:
             dec_cfg.update(decoder_config)
@@ -75,7 +75,7 @@ class STTModel(nn.Module):
         # CTC Loss Criterion
         self.ctc_criterion = nn.CTCLoss(blank=0, zero_infinity=True)
         # Cross Entropy Criterion for Autoregressive Decoder (ignore padding token 1)
-        self.ce_criterion = nn.CrossEntropyLoss(ignore_index=1)
+        self.ce_criterion = nn.CrossEntropyLoss(ignore_index=1, label_smoothing=0.1)
 
     def forward(
         self,

@@ -67,4 +67,11 @@ wandb/
 .env
 *.pickle
 *.pkl
+*.safetensors
+*.arpa
+*.part
+hf_model_bundle/
+hf_space_bundle/
+backups/
+data/lm/
 

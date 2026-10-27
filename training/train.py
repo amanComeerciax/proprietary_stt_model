@@ -8,9 +8,15 @@ from __future__ import annotations
 
 import logging
 import os
+import sys
 import time
 from pathlib import Path
 from typing import Any, Dict, Optional, Union
+
+# Ensure project root is in sys.path for direct script execution
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import torch
 import torch.nn as nn
@@ -72,11 +78,11 @@ class Trainer:
             weight_decay=config.weight_decay,
         )
 
-        # 2. Scheduler: Cosine Annealing
+        # 2. Scheduler: Cosine Annealing (keep eta_min at 5e-5 so model can continue learning)
         self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
             self.optimizer,
-            T_max=config.num_epochs,
-            eta_min=1e-6,
+            T_max=max(config.num_epochs, 60),
+            eta_min=5e-5,
         )
 
         # Checkpoint directory
@@ -263,9 +269,11 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=30, help="Target total training epochs")
     parser.add_argument("--batch_size", type=int, default=2, help="Batch size")
     parser.add_argument("--lr", type=float, default=3e-4, help="Learning rate")
-    parser.add_argument("--manifest", type=str, default="data/metadata/metadata.csv", help="Path to manifest CSV")
+    parser.add_argument("--train_manifest", type=str, default="data/metadata/train.csv", help="Path to train CSV")
+    parser.add_argument("--val_manifest", type=str, default="data/metadata/val.csv", help="Path to val CSV")
     parser.add_argument("--device", type=str, default="cpu", help="Device (cpu, mps, cuda)")
     parser.add_argument("--resume", type=str, default=None, help="Path to checkpoint to resume")
+    parser.add_argument("--augment", action="store_true", help="Enable Data Augmentation (Noise, SpecAugment, Volume)")
     args = parser.parse_args()
 
     config = TrainingConfig(
@@ -274,11 +282,20 @@ if __name__ == "__main__":
         learning_rate=args.lr,
         checkpoint_dir="checkpoints/",
     )
+    config.early_stopping_patience = 50  # Prevent premature stopping during tough training
 
     train_loader = create_dataloader(
-        manifest_path=args.manifest,
+        manifest_path=args.train_manifest,
         batch_size=config.batch_size,
         shuffle=True,
+        augment=args.augment,
+    )
+
+    val_loader = create_dataloader(
+        manifest_path=args.val_manifest,
+        batch_size=config.batch_size,
+        shuffle=False,
+        augment=False,
     )
 
     tokenizer = train_loader.dataset.tokenizer
@@ -288,7 +305,7 @@ if __name__ == "__main__":
         model=model,
         config=config,
         train_loader=train_loader,
-        val_loader=train_loader,
+        val_loader=val_loader,
         device=args.device,
         tokenizer=tokenizer,
     )

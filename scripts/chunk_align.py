@@ -82,7 +82,7 @@ def main():
                     best_end_idx = j
             
             # If we found a reasonable match
-            if best_sim > 0.5 and seg_idx < len(segments):
+            if best_sim >= 0.15 and seg_idx < len(segments):
                 start_s = max(0.0, segments[seg_idx].start - 0.1)
                 end_s = min(total_dur, segments[best_end_idx].end + 0.1)
                 
@@ -95,23 +95,11 @@ def main():
             else:
                 print(f"  -> WARNING: Could not align sentence: '{gt_sent[:30]}...'")
         
-        # If alignment missed sentences, we fallback to just saving the whole file as 1 chunk to preserve exact data
-        if len(aligned_chunks) != len(gt_sentences):
-            print(f"  -> ALIGNMENT MISMATCH (Found {len(aligned_chunks)}, Expected {len(gt_sentences)}). Saving whole file as 1 chunk.")
-            chunk_filename = f"{file_stem}_full.wav"
-            chunk_full_path = lang_chunk_dir / chunk_filename
-            chunk_rel_path = str(chunk_full_path.relative_to(PROJECT_ROOT))
+        # If it found at least some perfectly aligned chunks, save them!
+        if len(aligned_chunks) > 0:
+            if len(aligned_chunks) != len(gt_sentences):
+                print(f"  -> ALIGNMENT PARTIAL (Found {len(aligned_chunks)} out of {len(gt_sentences)} expected). Saving the perfect ones anyway!")
             
-            sf.write(str(chunk_full_path), audio_data, sr)
-            chunk_records.append({
-                "audio_path": chunk_rel_path,
-                "transcript": gt_transcript,
-                "language": language,
-                "speaker": speaker,
-                "duration": round(total_dur, 2),
-            })
-        else:
-            # Save the perfectly aligned chunks
             for i, chunk in enumerate(aligned_chunks, 1):
                 duration = chunk["end"] - chunk["start"]
                 if duration <= 0: continue
@@ -133,6 +121,21 @@ def main():
                     "duration": round(duration, 2),
                 })
             print(f"  -> Created {len(aligned_chunks)} exact chunks in {time.time()-t0:.1f}s")
+            
+        else:
+            print(f"  -> ALIGNMENT COMPLETELY FAILED. Saving whole file as 1 chunk.")
+            chunk_filename = f"{file_stem}_full.wav"
+            chunk_full_path = lang_chunk_dir / chunk_filename
+            chunk_rel_path = str(chunk_full_path.relative_to(PROJECT_ROOT))
+            
+            sf.write(str(chunk_full_path), audio_data, sr)
+            chunk_records.append({
+                "audio_path": chunk_rel_path,
+                "transcript": gt_transcript,
+                "language": language,
+                "speaker": speaker,
+                "duration": round(total_dur, 2),
+            })
 
     # Write output manifest
     with open(manifest_out_file, "w", encoding="utf-8", newline="") as f:

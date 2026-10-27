@@ -17,13 +17,16 @@ def main():
         sys.exit(1)
 
     audio_path = sys.argv[1]
+    lang = "gu"
+    if len(sys.argv) > 2:
+        lang = sys.argv[2]
     if not Path(audio_path).exists():
         print(f"[!] File not found: {audio_path}")
         sys.exit(1)
 
     engine = STTInference(device="cpu")
-    print(f"\n[*] Transcribing audio: {audio_path}")
-    res = engine.transcribe_file(audio_path)
+    print(f"\n[*] Transcribing audio: {audio_path} (Language Mode: {lang.upper()})")
+    res = engine.transcribe_file(audio_path, language=lang)
 
     print("\n" + "=" * 65)
     print("🎙️ TRANSCRIPTION RESULT (Multilingual STT):")

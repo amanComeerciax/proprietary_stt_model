@@ -32,6 +32,10 @@ def build_language_model(
     wiki_gu_limit: int = 60000,
     wiki_hi_limit: int = 60000,
 ):
+    if Path("data/metadata/combined_train_v2.csv").exists():
+        train_csv = "data/metadata/combined_train_v2.csv"
+        val_csv = "data/metadata/combined_val_v2.csv"
+
     out_path = Path(out_dir)
     out_path.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
@@ -43,19 +47,21 @@ def build_language_model(
     sentences = []
     manifest_words = set()
 
-    # 1. Project manifests (speech domain - repeated 3x for high prior weight)
+    # 1. Project manifests (speech domain - repeated 5x for high prior weight)
     print("\n[*] 1. Reading project speech manifests...")
-    for csv_file in [train_csv, val_csv]:
+    manifest_files = [train_csv, val_csv, "data/metadata/metadata_all.csv"]
+    for csv_file in manifest_files:
         if Path(csv_file).exists():
             df = pd.read_csv(csv_file)
-            transcripts = list(df["transcript"].dropna())
+            col = "transcript" if "transcript" in df.columns else "text"
+            transcripts = list(df[col].dropna())
             for t in transcripts:
-                for w in clean_tokens(t):
+                for w in clean_tokens(str(t)):
                     manifest_words.add(w)
-            sentences.extend(transcripts * 3)
+            sentences.extend([str(t) for t in transcripts] * 5)
             print(f"    - Loaded {len(transcripts):,} from {csv_file}")
 
-    print(f"[+] Total manifest sentences added (x3 weight): {len(sentences):,}")
+    print(f"[+] Total manifest sentences added (x5 weight): {len(sentences):,}")
     print(f"[+] Speech manifest unique vocabulary: {len(manifest_words):,}")
 
     # 2. Ingest Gujarati Wikipedia
@@ -147,8 +153,30 @@ def build_language_model(
     except Exception as e:
         print(f"[!] Warning reading AG News: {e}")
 
-    # C. Common Voice Commands & Conversational Templates (weighted 5x)
+    # C. Common Voice Commands & Conversational Templates (weighted 10x)
     voice_templates = [
+        # Gujarati Voice Commands, Temperatures & Numbers
+        "એસીનું તાપમાન છવ્વીસ ડિગ્રી કરો", "એસીનું તાપમાન ચોવીસ ડિગ્રી કરો", "એસીનું તાપમાન પચ્ચીસ ડિગ્રી કરો",
+        "એસીનું તાપમાન સત્તાવીસ ડિગ્રી કરો", "એસીનું તાપમાન બાવીસ ડિગ્રી કરો", "એસીનું તાપમાન વીસ ડિગ્રી કરો",
+        "એસી ચાલુ કરો", "એસી બંધ કરો", "લાઇટ ચાલુ કરો", "લાઇટ બંધ કરો", "રૂમની લાઇટ બંધ કરો",
+        "પંખો ચાલુ કરો", "પંખો બંધ કરો", "પંખો ધીમો કરો", "પંખો ઝડપી કરો",
+        "નમસ્તે તમે કેમ છો", "હું મજામાં છું", "તમારું નામ શું છે", "આભાર તમારો ખૂબ ખૂબ આભાર",
+        "છોકરાઓ ઝાડ પર ચઢીને ફળ તોડે છે", "મારા એકાઉન્ટમાં પેમેન્ટ હજી પેન્ડિંગ દેખાય છે", "એનીડેસ્ક બંધ કરો",
+        "બારી બંધ કરો", "દરવાજો ખોલો", "દરવાજો બંધ કરો", "મને પાણી આપો", "જમવાનું તૈયાર છે",
+        "એક બે ત્રણ ચાર પાંચ છ સાત આઠ નવ દસ અગિયાર બાર તેર ચૌદ પંદર સોળ સત્તર અઢાર ઓગણિસ વીસ",
+        "એકવીસ બાવીસ ત્રેવીસ ચોવીસ પચ્ચીસ છવ્વીસ સત્તાવીસ અઠ્ઠાવીસ ઓગણત્રીસ ત્રીસ",
+
+        # Hindi Voice Commands, Temperatures & Numbers
+        "एसी का तापमान छब्बीस डिग्री करो", "एसी का तापमान चौबीस डिग्री करो", "एसी का तापमान पच्चीस डिग्री करो",
+        "एसी चालू करो", "एसी बंद करो", "लाइट चालू करो", "लाइट बंद करो", "कमरे की लाइट बंद करो",
+        "पंखा चालू करो", "पंखा बंद करो", "पंखा तेज करो", "पंखा धीमा करो",
+        "गाना बजाओ", "अगला गाना बजाओ", "गाना बंद करो", "आवाज बढ़ाओ", "आवाज कम करो",
+        "घर जाने का रास्ता दिखाओ", "आज का मौसम कैसा है", "चंदू के चाचा ने चाँदनी चौक में चाँदी की चम्मच से चटनी चखी",
+        "कमरे की खिड़की खोलो", "दरवाजा बंद करो", "मुझे एक गिलास पानी दो", "खाना खा लो", "चाय पी लो",
+        "एक दो तीन चार पाँच छह सात आठ नौ दस ग्यारह बारह तेरह चौदह पंद्रह सोलह सत्रह अट्ठारह उन्नीस बीस",
+        "इक्कीस बाईस तेईस चौबीस पच्चीस छब्बीस सत्ताईस अट्ठाईस उनतीस तीस",
+
+        # English Voice Commands
         "turn on the lights", "turn off the lights", "turn on the lights in the room",
         "turn off the lights in the room", "turn off the lights in the bedroom",
         "turn on the lights in the kitchen", "turn off the lights in the living room",
@@ -166,8 +194,8 @@ def build_language_model(
         "next song", "previous song", "pause the music", "resume playing", "how are you today",
         "thank you very much", "have a nice day", "good morning", "good evening", "good night",
     ]
-    sentences.extend(voice_templates * 5)
-    print(f"    - Added voice commands & conversational templates (weighted 5x).")
+    sentences.extend(voice_templates * 10)
+    print(f"    - Added multilingual voice commands & conversational templates (weighted 10x).")
     print(f"[+] Total English sentences added: {en_count + len(voice_templates)*5:,}")
 
     print(f"\n[+] Total combined training corpus: {len(sentences):,} sentences.")

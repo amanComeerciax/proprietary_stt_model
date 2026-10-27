@@ -316,10 +316,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
   <header>
     <div class="brand">
-      <div class="badge">MMS-300M • Best CER: 12.1%</div>
+      <div class="badge" style="background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4);">MMS-300M Fine-Tuned • Best CER: 9.1% (Gujarati 6.5%)</div>
       <div>
         <h1>Multilingual Speech-to-Text Studio</h1>
-        <div class="subtitle">Gujarati (10.6% CER) • Hindi (13.9% CER) • English (12.8% CER) | Ultra-Fast Mac CPU</div>
+        <div class="subtitle">Gujarati (6.5% CER) • Hindi (8.4% CER) • English (12.6% CER) | Ultra-Fast Mac CPU</div>
       </div>
     </div>
   </header>
@@ -351,6 +351,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <span id="liveStatusBadge" style="display: none;" class="status-badge">✓ Complete</span>
       </div>
 
+      <!-- Language Mode Priority Selector -->
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; padding: 0.55rem 0.85rem; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); border-radius: 0.65rem;">
+        <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Language Priority:</span>
+        <div style="display: flex; gap: 0.4rem;" id="langModeSelector">
+          <button type="button" class="lang-pill" id="pill_gu" onclick="setLanguageMode('gu')" style="padding: 0.32rem 0.8rem; border-radius: 20px; border: 1px solid #10b981; background: #10b981; color: #fff; font-weight: 600; font-size: 0.8rem; cursor: pointer;">🟢 Gujarati</button>
+          <button type="button" class="lang-pill" id="pill_hi" onclick="setLanguageMode('hi')" style="padding: 0.32rem 0.8rem; border-radius: 20px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.05); color: #cbd5e1; font-weight: 500; font-size: 0.8rem; cursor: pointer;">🟠 Hindi</button>
+          <button type="button" class="lang-pill" id="pill_en" onclick="setLanguageMode('en')" style="padding: 0.32rem 0.8rem; border-radius: 20px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.05); color: #cbd5e1; font-weight: 500; font-size: 0.8rem; cursor: pointer;">🔵 English</button>
+          <button type="button" class="lang-pill" id="pill_auto" onclick="setLanguageMode('auto')" style="padding: 0.32rem 0.8rem; border-radius: 20px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.05); color: #cbd5e1; font-weight: 500; font-size: 0.8rem; cursor: pointer;">⚪ Auto</button>
+        </div>
+      </div>
+
       <div class="player-box">
         <div style="font-weight: 500; font-size: 0.9rem; color: var(--text-muted);" id="currentAudioName">Select an audio sample from the left</div>
         <audio id="audioPlayer" controls style="display: none;"></audio>
@@ -361,8 +372,37 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           ▶ Transcribe on Mac CPU
         </button>
         <button class="transcribe-btn" id="recordBtn" onclick="toggleRecording()" style="flex: 1; background: linear-gradient(135deg, #ef4444, #b91c1c);">
-          🎤 Record Mic
+          🎤 Record Mic (Lossless WAV)
         </button>
+      </div>
+
+      <!-- Hardware Mic Enhancements Checkboxes -->
+      <div style="display: flex; gap: 0.9rem; align-items: center; justify-content: center; margin-top: 0.65rem; padding: 0.45rem 0.85rem; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); border-radius: 0.5rem; font-size: 0.78rem; color: #94a3b8;">
+        <span style="font-weight: 600; color: #cbd5e1;">Hardware Mic:</span>
+        <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; user-select: none;">
+          <input type="checkbox" id="chkEcho" checked style="accent-color: #10b981;"> Echo Cancel
+        </label>
+        <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; user-select: none;">
+          <input type="checkbox" id="chkNoise" checked style="accent-color: #10b981;"> Noise Suppress
+        </label>
+        <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; user-select: none;">
+          <input type="checkbox" id="chkAgc" checked style="accent-color: #10b981;"> Auto Gain
+        </label>
+      </div>
+
+
+      <!-- Dedicated Live Audio VU Level Meter -->
+      <div id="liveMeterContainer" style="display: none; margin-top: 0.75rem; background: rgba(0,0,0,0.5); border-radius: 0.65rem; padding: 0.65rem 0.9rem; border: 1px solid rgba(255,255,255,0.15);">
+        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.4rem;">
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span>
+            <strong style="color: #f8fafc;">Live Mic Volume</strong>
+          </span>
+          <span id="liveMeterPct" style="font-weight: 700; color: #10b981; font-size: 0.9rem;">0%</span>
+        </div>
+        <div style="width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; overflow: hidden;">
+          <div id="liveMeterBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #ef4444 100%); transition: width 0.08s ease;"></div>
+        </div>
       </div>
 
       <div class="metrics-row" id="metricsRow" style="display: none;">
@@ -405,12 +445,94 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
       </div>
 
+      <!-- Word Timestamps & Interactive Subtitles (SRT) Card -->
+      <div class="output-box" id="timestampsCard" style="display: none; margin-top: 1rem; border-color: rgba(16, 185, 129, 0.35);">
+        <div class="output-header">
+          <span style="display: flex; align-items: center; gap: 0.5rem; color: #10b981; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Word-Level Timestamps (Click word to play audio from that exact second)
+          </span>
+          <span id="wordCountBadge" style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 0.2rem 0.5rem; border-radius: 12px; font-weight: 600;">0 words</span>
+        </div>
+        
+        <!-- Interactive Word Chips Container -->
+        <div id="wordChipsContainer" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; max-height: 180px; overflow-y: auto; padding-right: 0.25rem;">
+        </div>
+
+        <!-- SubRip (SRT) Subtitle Block -->
+        <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.75rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.82rem; font-weight: 600; color: #cbd5e1;">📄 SRT Subtitle Format (YouTube / Premiere / VLC Ready)</span>
+            <div style="display: flex; gap: 0.5rem;">
+              <button onclick="copySrtToClipboard()" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35); color: #38bdf8; padding: 0.25rem 0.65rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">📋 Copy SRT</button>
+              <button onclick="downloadSrtFile()" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #10b981; padding: 0.25rem 0.65rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">⬇ Download .srt</button>
+            </div>
+          </div>
+          <pre id="srtTextContainer" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.4rem; padding: 0.75rem; font-family: monospace; font-size: 0.8rem; color: #94a3b8; max-height: 140px; overflow-y: auto; white-space: pre-wrap; line-height: 1.4; margin: 0;"></pre>
+        </div>
+      </div>
+
       <div class="output-box" style="margin-top: 1rem;">
         <div class="output-header">
           <span>Ground Truth Reference (Actual Script)</span>
           <button id="saveGtBtn" onclick="saveGroundTruth()" style="display:none; background:var(--accent-en); color:#0f172a; border:none; padding:0.25rem 0.75rem; border-radius:0.25rem; font-size:0.75rem; font-weight:bold; cursor:pointer;">💾 Save</button>
         </div>
-        <textarea id="groundTruthText" oninput="document.getElementById('saveGtBtn').style.display='inline-block'" style="width: 100%; min-height: 60px; background: rgba(0,0,0,0.3); color: #cbd5e1; font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 0.75rem; font-family: inherit; resize: vertical;" placeholder="Select a clip to see text..."></textarea>
+        <textarea id="groundTruthText" oninput="updateLiveCer(); document.getElementById('saveGtBtn').style.display='inline-block'" style="width: 100%; min-height: 60px; background: rgba(0,0,0,0.3); color: #cbd5e1; font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 0.75rem; font-family: inherit; resize: vertical;" placeholder="Type or view ground truth script here..."></textarea>
+      </div>
+
+      <!-- Audio Preprocessing & Pipeline Diagnostics Panel -->
+      <div class="output-box" id="audioMetricsCard" style="display: none; margin-top: 1rem; border-color: rgba(56, 189, 248, 0.35); background: rgba(15, 23, 42, 0.75);">
+        <div class="output-header" style="cursor: pointer; user-select: none;" onclick="toggleMetricsBody()">
+          <span style="display: flex; align-items: center; gap: 0.5rem; color: #38bdf8; font-weight: 600;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5v14M7 8v8M2 11v2M22 11v2"/></svg>
+            Audio Preprocessing & Pipeline Diagnostics
+          </span>
+          <span id="metricsToggleIcon" style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">▲ Collapse</span>
+        </div>
+        <div id="metricsBody" style="display: block; margin-top: 0.75rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.65rem; font-size: 0.82rem;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">Audio Duration:</span>
+              <span id="mAudioDuration" style="font-weight: 600; color: #f1f5f9;">-</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">Original Sample Rate:</span>
+              <span id="mOrigSr" style="font-weight: 600; color: #f1f5f9;">-</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">Final Sample Rate:</span>
+              <span id="mFinalSr" style="font-weight: 600; color: #10b981;">16,000 Hz</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">Number of Channels:</span>
+              <span id="mChannels" style="font-weight: 600; color: #f1f5f9;">-</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">RMS Before Processing:</span>
+              <span id="mRmsBefore" style="font-weight: 600; color: #f1f5f9;">-</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">RMS After Processing:</span>
+              <span id="mRmsAfter" style="font-weight: 600; color: #38bdf8;">-</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">Peak Amplitude:</span>
+              <span id="mPeakAmp" style="font-weight: 600; color: #f1f5f9;">-</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">Duration After Trimming:</span>
+              <span id="mTrimmedDur" style="font-weight: 600; color: #f1f5f9;">-</span>
+            </div>
+            <div style="grid-column: 1 / -1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.4rem; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8; font-size: 0.78rem;">Waveform Shape:</span>
+              <span id="mWaveformShape" style="font-family: monospace; font-weight: 600; color: #f59e0b;">-</span>
+            </div>
+            <div style="grid-column: 1 / -1; background: rgba(0,0,0,0.4); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 0.4rem; padding: 0.65rem 0.8rem;">
+              <span style="display: block; font-size: 0.78rem; color: #94a3b8; margin-bottom: 0.25rem;">Model Output:</span>
+              <span id="mModelOutput" style="font-size: 0.95rem; font-weight: 600; color: #f8fafc;">-</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -494,6 +616,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       document.getElementById('metricsRow').style.display = 'none';
       document.getElementById('liveStatusBadge').style.display = 'none';
       document.getElementById('latencyTag').innerText = '';
+      const tsCard = document.getElementById('timestampsCard');
+      if (tsCard) tsCard.style.display = 'none';
     }
 
     function computeCer(ref, hyp) {
@@ -510,6 +634,67 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       return ((d[ref.length][hyp.length] / ref.length) * 100).toFixed(1);
     }
 
+    function toggleMetricsBody() {
+      const body = document.getElementById('metricsBody');
+      const icon = document.getElementById('metricsToggleIcon');
+      if (body.style.display === 'none') {
+        body.style.display = 'block';
+        icon.innerText = '▲ Collapse';
+      } else {
+        body.style.display = 'none';
+        icon.innerText = '▼ Expand';
+      }
+    }
+
+    function updateAudioMetrics(metrics, modelText) {
+      const card = document.getElementById('audioMetricsCard');
+      if (!card) return;
+      if (!metrics) {
+        card.style.display = 'none';
+        return;
+      }
+      card.style.display = 'block';
+      const body = document.getElementById('metricsBody');
+      if (body) body.style.display = 'block';
+      const icon = document.getElementById('metricsToggleIcon');
+      if (icon) icon.innerText = '▲ Collapse';
+
+      document.getElementById('mAudioDuration').innerText = metrics.audio_duration || '-';
+      document.getElementById('mOrigSr').innerText = metrics.original_sample_rate || '-';
+      document.getElementById('mFinalSr').innerText = metrics.final_sample_rate || '16,000 Hz';
+      document.getElementById('mChannels').innerText = metrics.num_channels || '-';
+      document.getElementById('mRmsBefore').innerText = metrics.rms_before || '-';
+      document.getElementById('mRmsAfter').innerText = metrics.rms_after || '-';
+      document.getElementById('mPeakAmp').innerText = metrics.peak_amplitude || '-';
+      document.getElementById('mTrimmedDur').innerText = metrics.duration_after_trim || '-';
+      document.getElementById('mWaveformShape').innerText = metrics.waveform_shape || '-';
+      document.getElementById('mModelOutput').innerText = modelText || '-';
+    }
+
+    let currentLangMode = 'gu';
+    function setLanguageMode(lang) {
+      currentLangMode = lang;
+      const pills = ['gu', 'hi', 'en', 'auto'];
+      pills.forEach(p => {
+        const el = document.getElementById('pill_' + p);
+        if (el) {
+          el.style.background = 'rgba(255,255,255,0.05)';
+          el.style.color = '#cbd5e1';
+          el.style.borderColor = 'var(--card-border)';
+          el.style.fontWeight = '500';
+        }
+      });
+      const activeEl = document.getElementById('pill_' + lang);
+      if (activeEl) {
+        activeEl.style.fontWeight = '600';
+        activeEl.style.color = '#fff';
+        if (lang === 'gu') { activeEl.style.background = '#10b981'; activeEl.style.borderColor = '#10b981'; }
+        else if (lang === 'hi') { activeEl.style.background = '#f59e0b'; activeEl.style.borderColor = '#f59e0b'; }
+        else if (lang === 'en') { activeEl.style.background = '#38bdf8'; activeEl.style.borderColor = '#38bdf8'; }
+        else { activeEl.style.background = '#6366f1'; activeEl.style.borderColor = '#6366f1'; }
+      }
+    }
+
     async function runInference() {
       if (!selectedSample) return;
 
@@ -517,7 +702,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       btn.innerText = '⚡ Transcribing on Mac CPU...';
       btn.disabled = true;
 
-      const res = await fetch('/api/transcribe?path=' + encodeURIComponent(selectedSample.audio_path));
+      const res = await fetch('/api/transcribe?path=' + encodeURIComponent(selectedSample.audio_path) + '&lang=' + currentLangMode);
       const data = await res.json();
 
       document.getElementById('outputText').style.color = '#f8fafc';
@@ -542,93 +727,316 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       document.getElementById('liveStatusBadge').style.display = 'inline-block';
       document.getElementById('latencyTag').innerText = '⚡ ' + data.inference_time + 's (' + data.rtf + 'x RTF)';
 
+      if (data.audio_metrics) {
+        updateAudioMetrics(data.audio_metrics, data.text);
+      }
+
+      renderTimestampsAndSrt(data.word_timestamps, data.srt_subtitles);
+
       btn.innerText = '▶ Transcribe on Mac CPU';
       btn.disabled = false;
     }
 
-    let mediaRecorder;
-    let audioChunks = [];
+    let latestSrtText = '';
+
+    function renderTimestampsAndSrt(wordTimestamps, srtSubtitles) {
+      const card = document.getElementById('timestampsCard');
+      const container = document.getElementById('wordChipsContainer');
+      const srtContainer = document.getElementById('srtTextContainer');
+      const badge = document.getElementById('wordCountBadge');
+
+      if (!wordTimestamps || wordTimestamps.length === 0) {
+        if (card) card.style.display = 'none';
+        return;
+      }
+
+      if (card) card.style.display = 'block';
+      if (badge) badge.innerText = wordTimestamps.length + ' words';
+      latestSrtText = srtSubtitles || '';
+
+      if (container) {
+        container.innerHTML = '';
+        wordTimestamps.forEach(item => {
+          const chip = document.createElement('div');
+          chip.className = 'word-time-chip';
+          chip.style.cssText = 'background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 0.35rem 0.65rem; font-size: 0.85rem; cursor: pointer; transition: all 0.15s ease; display: inline-flex; flex-direction: column; align-items: flex-start; user-select: none;';
+          chip.title = `Click to play audio from ${item.start}s`;
+          chip.onmouseover = () => { chip.style.background = 'rgba(16, 185, 129, 0.2)'; chip.style.borderColor = '#10b981'; };
+          chip.onmouseout = () => { chip.style.background = 'rgba(255,255,255,0.05)'; chip.style.borderColor = 'rgba(255,255,255,0.12)'; };
+          chip.onclick = () => {
+            const player = document.getElementById('audioPlayer');
+            if (player) {
+              player.currentTime = item.start;
+              player.play();
+            }
+          };
+          chip.innerHTML = `
+            <span style="font-weight: 600; color: #f8fafc;">${item.word}</span>
+            <span style="font-size: 0.68rem; color: #10b981; font-family: monospace; margin-top: 0.15rem;">${item.start.toFixed(2)}s - ${item.end.toFixed(2)}s</span>
+          `;
+          container.appendChild(chip);
+        });
+      }
+
+      if (srtContainer) {
+        srtContainer.innerText = latestSrtText || '(No SRT generated)';
+      }
+    }
+
+    function copySrtToClipboard() {
+      if (!latestSrtText) return;
+      navigator.clipboard.writeText(latestSrtText).then(() => {
+        alert('✓ SRT Subtitles copied to clipboard!');
+      });
+    }
+
+    function downloadSrtFile() {
+      if (!latestSrtText) return;
+      const blob = new Blob([latestSrtText], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'subtitles.srt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    let isRecording = false;
+    let micStream = null;
+    let audioCtx = null;
+    let scriptProcessor = null;
+    let pcmChunks = [];
+    let animId = null;
+
+    function encodeWAV(samples, sampleRate) {
+      const buffer = new ArrayBuffer(44 + samples.length * 2);
+      const view = new DataView(buffer);
+      function writeString(view, offset, string) {
+        for (let i = 0; i < string.length; i++) {
+          view.setUint8(offset + i, string.charCodeAt(i));
+        }
+      }
+      writeString(view, 0, 'RIFF');
+      view.setUint32(4, 36 + samples.length * 2, true);
+      writeString(view, 8, 'WAVE');
+      writeString(view, 12, 'fmt ');
+      view.setUint32(16, 16, true);
+      view.setUint16(20, 1, true); // PCM
+      view.setUint16(22, 1, true); // mono
+      view.setUint32(24, sampleRate, true);
+      view.setUint32(28, sampleRate * 2, true); // byte rate (sampleRate * 1 channel * 2 bytes)
+      view.setUint16(32, 2, true); // block align
+      view.setUint16(34, 16, true); // 16-bit
+      writeString(view, 36, 'data');
+      view.setUint32(40, samples.length * 2, true);
+      let offset = 44;
+      for (let i = 0; i < samples.length; i++, offset += 2) {
+        let s = Math.max(-1, Math.min(1, samples[i]));
+        view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+      }
+      return new Blob([view], { type: 'audio/wav' });
+    }
+
+    function downsampleBuffer(buffer, sampleRate, outSampleRate) {
+      if (outSampleRate === sampleRate) return buffer;
+      if (outSampleRate > sampleRate) return buffer;
+      const sampleRateRatio = sampleRate / outSampleRate;
+      const newLength = Math.round(buffer.length / sampleRateRatio);
+      const result = new Float32Array(newLength);
+      let offsetResult = 0;
+      let offsetBuffer = 0;
+      while (offsetResult < result.length) {
+        const nextOffsetBuffer = Math.round((offsetResult + 1) * sampleRateRatio);
+        let accum = 0, count = 0;
+        for (let i = offsetBuffer; i < nextOffsetBuffer && i < buffer.length; i++) {
+          accum += buffer[i];
+          count++;
+        }
+        result[offsetResult] = count > 0 ? accum / count : 0;
+        offsetResult++;
+        offsetBuffer = nextOffsetBuffer;
+      }
+      return result;
+    }
 
     async function toggleRecording() {
       const btn = document.getElementById('recordBtn');
-      if (mediaRecorder && mediaRecorder.state === "recording") {
-        mediaRecorder.stop();
-        btn.innerHTML = '🎤 Record Mic';
+      const meterContainer = document.getElementById('liveMeterContainer');
+      const meterBar = document.getElementById('liveMeterBar');
+      const meterPct = document.getElementById('liveMeterPct');
+
+      if (isRecording) {
+        isRecording = false;
+        btn.innerHTML = '🎤 Record Mic (Lossless WAV)';
         btn.style.background = 'linear-gradient(135deg, #ef4444, #b91c1c)';
-        document.getElementById('outputText').innerText = 'Processing recording...';
+        document.getElementById('outputText').innerText = 'Processing lossless recording...';
+
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+        if (meterContainer) meterContainer.style.display = 'none';
+
+        if (scriptProcessor) {
+          scriptProcessor.disconnect();
+          scriptProcessor = null;
+        }
+        if (micStream) {
+          micStream.getTracks().forEach(t => t.stop());
+          micStream = null;
+        }
+
+        const sampleRate = audioCtx ? audioCtx.sampleRate : 16000;
+        if (audioCtx) {
+          audioCtx.close();
+          audioCtx = null;
+        }
+
+        let totalLen = pcmChunks.reduce((acc, c) => acc + c.length, 0);
+        if (totalLen === 0) {
+          document.getElementById('outputText').innerText = 'No audio detected. Please try speaking again.';
+          return;
+        }
+        let merged = new Float32Array(totalLen);
+        let offset = 0;
+        for (let c of pcmChunks) {
+          merged.set(c, offset);
+          offset += c.length;
+        }
+        pcmChunks = [];
+
+        let final16k = merged;
+        if (sampleRate !== 16000) {
+          final16k = downsampleBuffer(merged, sampleRate, 16000);
+        }
+        const audioBlob = encodeWAV(final16k, 16000);
+
+        // Load into player so user can immediately hear what was recorded
+        const audioUrl = URL.createObjectURL(audioBlob);
+        const player = document.getElementById('audioPlayer');
+        player.src = audioUrl;
+        player.style.display = 'block';
+        document.getElementById('currentAudioName').innerText = '🎤 Your Mic Recording (Lossless WAV — click Play below)';
+
+        document.getElementById('transcribeBtn').disabled = true;
+        document.getElementById('outputText').innerText = '⚡ Transcribing studio audio...';
+        document.getElementById('outputText').style.color = 'var(--text-muted)';
+        document.getElementById('ctcText').innerText = '-';
+        document.getElementById('attnText').innerText = 'MMS-300M + KenLM + Smart Decoder';
+
+        const response = await fetch('/api/transcribe_upload?lang=' + currentLangMode + '&orig_sr=' + sampleRate, {
+          method: 'POST',
+          headers: { 'Content-Type': 'audio/wav' },
+          body: audioBlob
+        });
+        const data = await response.json();
+
+        document.getElementById('outputText').style.color = '#f8fafc';
+        document.getElementById('outputText').style.fontStyle = 'normal';
+        document.getElementById('outputText').innerText = data.text || '(Silence / Empty)';
+        document.getElementById('ctcText').innerText = data.ctc_text || '(Empty)';
+        document.getElementById('attnText').innerText = data.lm_text || data.text || '(Empty)';
+
+        const refText = document.getElementById('groundTruthText').value.trim();
+        if (refText && refText !== '(Your live microphone voice)' && refText !== 'Recording in progress...') {
+          const cer = computeCer(refText, data.text || '');
+          document.getElementById('cerVal').innerText = cer + '%';
+        } else {
+          document.getElementById('cerVal').innerText = '0.0% CER';
+        }
+
+        document.getElementById('rtfVal').innerText = data.rtf + 'x';
+        document.getElementById('timeVal').innerText = data.inference_time + 's';
+        document.getElementById('durVal').innerText = data.duration + 's';
+        document.getElementById('metricsRow').style.display = 'grid';
+        document.getElementById('liveStatusBadge').style.display = 'inline-block';
+        document.getElementById('latencyTag').innerText = '⚡ ' + data.inference_time + 's (' + data.rtf + 'x RTF)';
+        document.getElementById('groundTruthText').value = data.text || '';
+
+        if (data.audio_metrics) {
+          updateAudioMetrics(data.audio_metrics, data.text);
+        }
+
+        renderTimestampsAndSrt(data.word_timestamps, data.srt_subtitles);
       } else {
         try {
-          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          
-          let options = {};
-          if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
-            options = { mimeType: 'audio/webm;codecs=opus' };
-          } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
-            options = { mimeType: 'audio/mp4' };
-          }
-          
-          mediaRecorder = new MediaRecorder(stream, options);
-          mediaRecorder.ondataavailable = event => {
-            if (event.data && event.data.size > 0) {
-              audioChunks.push(event.data);
-            }
-          };
-          mediaRecorder.onstop = async () => {
-            const mimeType = mediaRecorder.mimeType || 'audio/webm';
-            const audioBlob = new Blob(audioChunks, { type: mimeType });
-            audioChunks = [];
-            
-            // Set recorded audio to player so user can hear what was recorded!
-            const audioUrl = URL.createObjectURL(audioBlob);
-            const player = document.getElementById('audioPlayer');
-            player.src = audioUrl;
-            player.style.display = 'block';
-            document.getElementById('currentAudioName').innerText = '🎤 Your Mic Recording (Playing below)';
-            
-            document.getElementById('transcribeBtn').disabled = true;
-            document.getElementById('outputText').innerText = '⚡ Transcribing your voice...';
-            document.getElementById('outputText').style.color = 'var(--text-muted)';
-            document.getElementById('ctcText').innerText = '-';
-            document.getElementById('attnText').innerText = 'MMS-300M (Fine-tuned)';
+          const echoVal = document.getElementById('chkEcho') ? document.getElementById('chkEcho').checked : true;
+          const noiseVal = document.getElementById('chkNoise') ? document.getElementById('chkNoise').checked : true;
+          const agcVal = document.getElementById('chkAgc') ? document.getElementById('chkAgc').checked : true;
 
-            const response = await fetch('/api/transcribe_upload', {
-              method: 'POST',
-              headers: { 'Content-Type': mimeType },
-              body: audioBlob
-            });
-            const data = await response.json();
-            
-            document.getElementById('outputText').style.color = '#f8fafc';
-            document.getElementById('outputText').style.fontStyle = 'normal';
-            document.getElementById('outputText').innerText = data.text || '(Silence / Empty)';
-            document.getElementById('ctcText').innerText = data.ctc_text || '(Empty)';
-            document.getElementById('attnText').innerText = data.lm_text || data.text || '(Empty)';
-            document.getElementById('cerVal').innerText = 'Live Mic';
-            document.getElementById('rtfVal').innerText = data.rtf + 'x';
-            document.getElementById('timeVal').innerText = data.inference_time + 's';
-            document.getElementById('durVal').innerText = data.duration + 's';
-            document.getElementById('metricsRow').style.display = 'grid';
-            document.getElementById('liveStatusBadge').style.display = 'inline-block';
-            document.getElementById('latencyTag').innerText = '⚡ ' + data.inference_time + 's (' + data.rtf + 'x RTF)';
-            document.getElementById('groundTruthText').value = '(Your live microphone voice)';
+          micStream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+              channelCount: 1,
+              sampleRate: { ideal: 16000 },
+              echoCancellation: echoVal,
+              noiseSuppression: noiseVal,
+              autoGainControl: agcVal
+            }
+          });
+
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          if (audioCtx.state === 'suspended') {
+            await audioCtx.resume();
+          }
+
+          const source = audioCtx.createMediaStreamSource(micStream);
+          const analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 256;
+          source.connect(analyser);
+
+          scriptProcessor = audioCtx.createScriptProcessor(4096, 1, 1);
+          pcmChunks = [];
+          scriptProcessor.onaudioprocess = (e) => {
+            if (!isRecording) return;
+            const channelData = e.inputBuffer.getChannelData(0);
+            pcmChunks.push(new Float32Array(channelData));
           };
-          
-          audioChunks = [];
-          mediaRecorder.start(250);
+          source.connect(scriptProcessor);
+          scriptProcessor.connect(audioCtx.destination);
+
+          isRecording = true;
           btn.innerHTML = '⏹ Stop & Transcribe';
-          btn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
-          
+          btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+
           // Clear current selection visual
           document.querySelectorAll('.sample-item').forEach(el => el.classList.remove('selected'));
-          document.getElementById('currentAudioName').innerText = '🔴 Recording your voice... Speak now!';
+          document.getElementById('currentAudioName').innerText = '🔴 Recording lossless voice... Speak now!';
           document.getElementById('audioPlayer').style.display = 'none';
           document.getElementById('audioPlayer').pause();
           document.getElementById('transcribeBtn').disabled = true;
           document.getElementById('groundTruthText').value = 'Recording in progress...';
-          
-        } catch (err) {
-          alert('Microphone access denied or not available: ' + err.message);
+
+          if (meterContainer) {
+            meterContainer.style.display = 'block';
+            meterBar.style.width = '0%';
+            meterPct.innerText = '0% Volume';
+          }
+
+          const pcmData = new Uint8Array(analyser.frequencyBinCount);
+          function updateMeter() {
+            if (!isRecording) return;
+            analyser.getByteFrequencyData(pcmData);
+            let sum = 0;
+            for (let i = 0; i < pcmData.length; i++) sum += pcmData[i];
+            const avg = sum / pcmData.length;
+            const pct = Math.min(100, Math.round((avg / 64) * 100));
+            if (meterBar) meterBar.style.width = pct + '%';
+            if (meterPct) meterPct.innerText = pct + '% Volume';
+            animId = requestAnimationFrame(updateMeter);
+          }
+          updateMeter();
+        } catch(e) {
+          alert("Microphone Access Error: " + e.message);
         }
+      }
+    }
+
+    function updateLiveCer() {
+      const ref = document.getElementById('groundTruthText').value.trim();
+      const hyp = document.getElementById('outputText').innerText.trim();
+      if (ref && hyp && ref !== '(Your live microphone voice)' && ref !== 'Recording in progress...') {
+        const cer = computeCer(ref, hyp);
+        document.getElementById('cerVal').innerText = cer + '%';
       }
     }
 
@@ -710,6 +1118,7 @@ class STTStudioHandler(BaseHTTPRequestHandler):
         elif path == "/api/transcribe":
             qs = parse_qs(parsed.query)
             target_path = qs.get("path", [""])[0]
+            lang = qs.get("lang", ["gu"])[0]
 
             if not target_path:
                 self.send_error(400, "Missing path query parameter")
@@ -723,7 +1132,7 @@ class STTStudioHandler(BaseHTTPRequestHandler):
             if STTStudioHandler.engine is None:
                 STTStudioHandler.engine = STTInference(device="cpu")
 
-            result = STTStudioHandler.engine.transcribe_file(full_audio_path)
+            result = STTStudioHandler.engine.transcribe_file(full_audio_path, language=lang, source="file")
 
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -736,6 +1145,12 @@ class STTStudioHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         parsed = urlparse(self.path)
         if parsed.path == "/api/transcribe_upload":
+            qs = parse_qs(parsed.query)
+            lang = qs.get("lang", ["gu"])[0]
+            try:
+                orig_sr_hint = int(qs.get("orig_sr", [0])[0]) or None
+            except Exception:
+                orig_sr_hint = None
             content_length = int(self.headers.get('Content-Length', 0))
             post_data = self.rfile.read(content_length)
             
@@ -743,7 +1158,7 @@ class STTStudioHandler(BaseHTTPRequestHandler):
             import subprocess
             
             # Save raw upload
-            with tempfile.NamedTemporaryFile(suffix=".raw_audio", delete=False) as f_in:
+            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f_in:
                 f_in.write(post_data)
                 upload_path = f_in.name
             
@@ -762,7 +1177,8 @@ class STTStudioHandler(BaseHTTPRequestHandler):
                 STTStudioHandler.engine = STTInference(device="cpu")
                 
             try:
-                result = STTStudioHandler.engine.transcribe_file(target_audio)
+                # source="mic" activates enhanced DSP + adaptive decoding pipeline
+                result = STTStudioHandler.engine.transcribe_file(target_audio, language=lang, source="mic", orig_sr_hint=orig_sr_hint)
             except Exception as e:
                 result = {"text": f"Error: {e}", "ctc_text": "", "attn_text": "", "duration": 0, "inference_time": 0, "rtf": 0}
             

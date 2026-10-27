@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manual Annotation UI</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; }
+        h1 { color: #38bdf8; text-align: center; }
+        .card { background: #1e293b; padding: 15px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #334155; display: flex; gap: 20px; align-items: center; }
+        .audio-container { flex: 1; }
+        .input-container { flex: 2; }
+        textarea { width: 100%; height: 60px; background: #0f172a; color: white; border: 1px solid #38bdf8; border-radius: 4px; padding: 10px; font-size: 16px; }
+        button.export { display: block; width: 100%; padding: 15px; background: #0284c7; color: white; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; position: sticky; bottom: 20px; }
+        button.export:hover { background: #0369a1; }
+        .hint { font-size: 12px; color: #94a3b8; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Audio Splitter & Annotation UI</h1>
+    <p style="text-align:center;">Sun kar text likhiye. Jab sab ho jaye toh Export daba dijiye!</p>
+    
+    <div id="data-container">
+
+        <div class="card" data-path="data/processed/chunks/manual/amaan1_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 1</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan1_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Water. Table. Morning. Market. Doctor. Bicycle. Window. Yellow. Music. Tomorrow. Ship, sheep. The sh...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan1_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 2</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan1_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Water. Table. Morning. Market. Doctor. Bicycle. Window. Yellow. Music. Tomorrow. Ship, sheep. The sh...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan1_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 3</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan1_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Water. Table. Morning. Market. Doctor. Bicycle. Window. Yellow. Music. Tomorrow. Ship, sheep. The sh...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan1_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 4</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan1_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Water. Table. Morning. Market. Doctor. Bicycle. Window. Yellow. Music. Tomorrow. Ship, sheep. The sh...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan1_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 5</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan1_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Water. Table. Morning. Market. Doctor. Bicycle. Window. Yellow. Music. Tomorrow. Ship, sheep. The sh...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan1_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 6</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan1_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Water. Table. Morning. Market. Doctor. Bicycle. Window. Yellow. Music. Tomorrow. Ship, sheep. The sh...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan1_full_part07.wav" data-lang="en" data-speaker="amaan" data-dur="1.66">
+            <div class="audio-container">
+                <p><strong>Part 7</strong> (1.66s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan1_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Water. Table. Morning. Market. Doctor. Bicycle. Window. Yellow. Music. Tomorrow. Ship, sheep. The sh...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 8</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Phone: 9 8 7 6 5 4 3 2 1 0. Phone: 7 0 1 2 3 4 5 6 7 8. Code: 4 4 1 9. Code: 0 6 2 8 5 3. PIN code: ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 9</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Phone: 9 8 7 6 5 4 3 2 1 0. Phone: 7 0 1 2 3 4 5 6 7 8. Code: 4 4 1 9. Code: 0 6 2 8 5 3. PIN code: ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 10</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Phone: 9 8 7 6 5 4 3 2 1 0. Phone: 7 0 1 2 3 4 5 6 7 8. Code: 4 4 1 9. Code: 0 6 2 8 5 3. PIN code: ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="5.0">
+            <div class="audio-container">
+                <p><strong>Part 11</strong> (5.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Phone: 9 8 7 6 5 4 3 2 1 0. Phone: 7 0 1 2 3 4 5 6 7 8. Code: 4 4 1 9. Code: 0 6 2 8 5 3. PIN code: ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_1_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 12</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_1_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Computer. Umbrella. Vegetable. Question. Elevator. Chocolate. Newspaper. Hospital. Calendar. Battery...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_1_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 13</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_1_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Computer. Umbrella. Vegetable. Question. Elevator. Chocolate. Newspaper. Hospital. Calendar. Battery...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_1_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 14</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_1_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Computer. Umbrella. Vegetable. Question. Elevator. Chocolate. Newspaper. Hospital. Calendar. Battery...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_1_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 15</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_1_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Computer. Umbrella. Vegetable. Question. Elevator. Chocolate. Newspaper. Hospital. Calendar. Battery...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_1_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 16</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_1_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Computer. Umbrella. Vegetable. Question. Elevator. Chocolate. Newspaper. Hospital. Calendar. Battery...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_1_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="9.84">
+            <div class="audio-container">
+                <p><strong>Part 17</strong> (9.84s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_1_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Computer. Umbrella. Vegetable. Question. Elevator. Chocolate. Newspaper. Hospital. Calendar. Battery...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_2_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 18</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_2_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: A T M. P D F. U S B. C E O. F A Q. I D card. G P S. W H O. S M S. V I P. My address is twelve Green ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_2_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 19</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_2_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: A T M. P D F. U S B. C E O. F A Q. I D card. G P S. W H O. S M S. V I P. My address is twelve Green ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_2_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 20</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_2_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: A T M. P D F. U S B. C E O. F A Q. I D card. G P S. W H O. S M S. V I P. My address is twelve Green ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_2_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 21</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_2_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: A T M. P D F. U S B. C E O. F A Q. I D card. G P S. W H O. S M S. V I P. My address is twelve Green ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_2_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 22</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_2_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: A T M. P D F. U S B. C E O. F A Q. I D card. G P S. W H O. S M S. V I P. My address is twelve Green ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_2_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="1.55">
+            <div class="audio-container">
+                <p><strong>Part 23</strong> (1.55s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_2_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: A T M. P D F. U S B. C E O. F A Q. I D card. G P S. W H O. S M S. V I P. My address is twelve Green ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_3_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 24</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_3_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: The meeting starts in five minutes. Please send me the report by noon. I will share my screen now. C...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_3_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 25</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_3_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: The meeting starts in five minutes. Please send me the report by noon. I will share my screen now. C...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_3_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 26</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_3_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: The meeting starts in five minutes. Please send me the report by noon. I will share my screen now. C...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_3_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 27</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_3_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: The meeting starts in five minutes. Please send me the report by noon. I will share my screen now. C...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_3_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 28</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_3_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: The meeting starts in five minutes. Please send me the report by noon. I will share my screen now. C...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_3_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="7.76">
+            <div class="audio-container">
+                <p><strong>Part 29</strong> (7.76s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_3_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: The meeting starts in five minutes. Please send me the report by noon. I will share my screen now. C...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_5_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 30</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_5_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Our team won the match by two goals. He plays football every Sunday. I like to paint and draw in my ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_5_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 31</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_5_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Our team won the match by two goals. He plays football every Sunday. I like to paint and draw in my ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_5_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 32</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_5_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Our team won the match by two goals. He plays football every Sunday. I like to paint and draw in my ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_5_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 33</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_5_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Our team won the match by two goals. He plays football every Sunday. I like to paint and draw in my ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_5_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="6.43">
+            <div class="audio-container">
+                <p><strong>Part 34</strong> (6.43s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_5_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Our team won the match by two goals. He plays football every Sunday. I like to paint and draw in my ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_6_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 35</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_6_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Who is coming to the party? What time does the store close? When will the parcel arrive? Where did y...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_6_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 36</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_6_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Who is coming to the party? What time does the store close? When will the parcel arrive? Where did y...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_6_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 37</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_6_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Who is coming to the party? What time does the store close? When will the parcel arrive? Where did y...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_6_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 38</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_6_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Who is coming to the party? What time does the store close? When will the parcel arrive? Where did y...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_6_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 39</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_6_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Who is coming to the party? What time does the store close? When will the parcel arrive? Where did y...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_6_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 40</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_6_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Who is coming to the party? What time does the store close? When will the parcel arrive? Where did y...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan2_6_full_part07.wav" data-lang="en" data-speaker="amaan" data-dur="2.88">
+            <div class="audio-container">
+                <p><strong>Part 41</strong> (2.88s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan2_6_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Who is coming to the party? What time does the store close? When will the parcel arrive? Where did y...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan3_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 42</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan3_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: My name is Aaron Mitchell. This is my sister Priya Sharma. Please call David or Emily. We are flying...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan3_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 43</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan3_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: My name is Aaron Mitchell. This is my sister Priya Sharma. Please call David or Emily. We are flying...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan3_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 44</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan3_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: My name is Aaron Mitchell. This is my sister Priya Sharma. Please call David or Emily. We are flying...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan3_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 45</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan3_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: My name is Aaron Mitchell. This is my sister Priya Sharma. Please call David or Emily. We are flying...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan3_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 46</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan3_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: My name is Aaron Mitchell. This is my sister Priya Sharma. Please call David or Emily. We are flying...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan3_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 47</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan3_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: My name is Aaron Mitchell. This is my sister Priya Sharma. Please call David or Emily. We are flying...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan3_full_part07.wav" data-lang="en" data-speaker="amaan" data-dur="2.72">
+            <div class="audio-container">
+                <p><strong>Part 48</strong> (2.72s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan3_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: My name is Aaron Mitchell. This is my sister Priya Sharma. Please call David or Emily. We are flying...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan4_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 49</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan4_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Which platform does the train leave from? Turn left at the traffic light. Go straight for two hundre...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan4_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 50</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan4_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Which platform does the train leave from? Turn left at the traffic light. Go straight for two hundre...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan4_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 51</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan4_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Which platform does the train leave from? Turn left at the traffic light. Go straight for two hundre...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan4_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 52</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan4_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Which platform does the train leave from? Turn left at the traffic light. Go straight for two hundre...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan4_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 53</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan4_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Which platform does the train leave from? Turn left at the traffic light. Go straight for two hundre...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan4_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="4.24">
+            <div class="audio-container">
+                <p><strong>Part 54</strong> (4.24s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan4_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Which platform does the train leave from? Turn left at the traffic light. Go straight for two hundre...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan5_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 55</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan5_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Hi, how are you? I am fine, thanks. And you? What did you do today? I can't come today, I am sorry. ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan5_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 56</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan5_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Hi, how are you? I am fine, thanks. And you? What did you do today? I can't come today, I am sorry. ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan5_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 57</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan5_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Hi, how are you? I am fine, thanks. And you? What did you do today? I can't come today, I am sorry. ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan5_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 58</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan5_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Hi, how are you? I am fine, thanks. And you? What did you do today? I can't come today, I am sorry. ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan5_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 59</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan5_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Hi, how are you? I am fine, thanks. And you? What did you do today? I can't come today, I am sorry. ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan5_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 60</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan5_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Hi, how are you? I am fine, thanks. And you? What did you do today? I can't come today, I am sorry. ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan5_full_part07.wav" data-lang="en" data-speaker="amaan" data-dur="8.99">
+            <div class="audio-container">
+                <p><strong>Part 61</strong> (8.99s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan5_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Hi, how are you? I am fine, thanks. And you? What did you do today? I can't come today, I am sorry. ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan6_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 62</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan6_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: She sells seashells by the seashore. Red lorry, yellow lorry. Peter Piper picked a peck of pickled p...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan6_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 63</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan6_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: She sells seashells by the seashore. Red lorry, yellow lorry. Peter Piper picked a peck of pickled p...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan6_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 64</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan6_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: She sells seashells by the seashore. Red lorry, yellow lorry. Peter Piper picked a peck of pickled p...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan6_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 65</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan6_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: She sells seashells by the seashore. Red lorry, yellow lorry. Peter Piper picked a peck of pickled p...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan6_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 66</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan6_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: She sells seashells by the seashore. Red lorry, yellow lorry. Peter Piper picked a peck of pickled p...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan6_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 67</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan6_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: She sells seashells by the seashore. Red lorry, yellow lorry. Peter Piper picked a peck of pickled p...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan6_full_part07.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 68</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan6_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: She sells seashells by the seashore. Red lorry, yellow lorry. Peter Piper picked a peck of pickled p...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan6_full_part08.wav" data-lang="en" data-speaker="amaan" data-dur="5.46">
+            <div class="audio-container">
+                <p><strong>Part 69</strong> (5.46s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan6_full_part08.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: She sells seashells by the seashore. Red lorry, yellow lorry. Peter Piper picked a peck of pickled p...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_2_7_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 70</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_2_7_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I think we should leave a bit earlier. Well, it's not that far from here. I mean, it was okay, but n...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_2_7_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 71</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_2_7_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I think we should leave a bit earlier. Well, it's not that far from here. I mean, it was okay, but n...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_2_7_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 72</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_2_7_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I think we should leave a bit earlier. Well, it's not that far from here. I mean, it was okay, but n...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_2_7_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 73</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_2_7_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I think we should leave a bit earlier. Well, it's not that far from here. I mean, it was okay, but n...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_2_7_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 74</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_2_7_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I think we should leave a bit earlier. Well, it's not that far from here. I mean, it was okay, but n...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_2_7_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 75</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_2_7_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I think we should leave a bit earlier. Well, it's not that far from here. I mean, it was okay, but n...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_2_7_full_part07.wav" data-lang="en" data-speaker="amaan" data-dur="1.7">
+            <div class="audio-container">
+                <p><strong>Part 76</strong> (1.7s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_2_7_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I think we should leave a bit earlier. Well, it's not that far from here. I mean, it was okay, but n...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman2_4_full_part01.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 77</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman2_4_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I would like to check my account balance. My card was declined at the shop. Please transfer the mone...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman2_4_full_part02.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 78</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman2_4_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I would like to check my account balance. My card was declined at the shop. Please transfer the mone...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman2_4_full_part03.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 79</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman2_4_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I would like to check my account balance. My card was declined at the shop. Please transfer the mone...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman2_4_full_part04.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 80</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman2_4_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I would like to check my account balance. My card was declined at the shop. Please transfer the mone...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman2_4_full_part05.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 81</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman2_4_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I would like to check my account balance. My card was declined at the shop. Please transfer the mone...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman2_4_full_part06.wav" data-lang="en" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 82</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman2_4_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: I would like to check my account balance. My card was declined at the shop. Please transfer the mone...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amaan_guj_7_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 83</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amaan_guj_7_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારા phone ની battery બહુ જલદી ઊતરી જાય છે। આ file ને email દ્વારા મોકલી આપો। Wi-Fi નો password શું ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amaan_guj_7_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 84</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amaan_guj_7_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારા phone ની battery બહુ જલદી ઊતરી જાય છે। આ file ને email દ્વારા મોકલી આપો। Wi-Fi નો password શું ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amaan_guj_7_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 85</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amaan_guj_7_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારા phone ની battery બહુ જલદી ઊતરી જાય છે। આ file ને email દ્વારા મોકલી આપો। Wi-Fi નો password શું ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amaan_guj_7_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 86</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amaan_guj_7_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારા phone ની battery બહુ જલદી ઊતરી જાય છે। આ file ને email દ્વારા મોકલી આપો। Wi-Fi નો password શું ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amaan_guj_7_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 87</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amaan_guj_7_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારા phone ની battery બહુ જલદી ઊતરી જાય છે। આ file ને email દ્વારા મોકલી આપો। Wi-Fi નો password શું ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amaan_guj_7_full_part06.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 88</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amaan_guj_7_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારા phone ની battery બહુ જલદી ઊતરી જાય છે। આ file ને email દ્વારા મોકલી આપો। Wi-Fi નો password શું ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amaan_guj_7_full_part07.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 89</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amaan_guj_7_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારા phone ની battery બહુ જલદી ઊતરી જાય છે। આ file ને email દ્વારા મોકલી આપો। Wi-Fi નો password શું ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_1_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 90</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_1_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: AnyDesk બંધ કરો। મારા માટે AnyDesk બંધ કરી દો। શું AnyDesk હજી ચાલુ છે? Brave ખોલો। Brave Browser બં...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_1_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 91</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_1_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: AnyDesk બંધ કરો। મારા માટે AnyDesk બંધ કરી દો। શું AnyDesk હજી ચાલુ છે? Brave ખોલો। Brave Browser બં...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_1_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 92</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_1_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: AnyDesk બંધ કરો। મારા માટે AnyDesk બંધ કરી દો। શું AnyDesk હજી ચાલુ છે? Brave ખોલો। Brave Browser બં...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_1_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 93</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_1_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: AnyDesk બંધ કરો। મારા માટે AnyDesk બંધ કરી દો। શું AnyDesk હજી ચાલુ છે? Brave ખોલો। Brave Browser બં...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_1_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 94</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_1_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: AnyDesk બંધ કરો। મારા માટે AnyDesk બંધ કરી દો। શું AnyDesk હજી ચાલુ છે? Brave ખોલો। Brave Browser બં...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_1_full_part06.wav" data-lang="gu" data-speaker="amaan" data-dur="9.42">
+            <div class="audio-container">
+                <p><strong>Part 95</strong> (9.42s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_1_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: AnyDesk બંધ કરો। મારા માટે AnyDesk બંધ કરી દો। શું AnyDesk હજી ચાલુ છે? Brave ખોલો। Brave Browser બં...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_2_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 96</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_2_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Brave અને Safari બંધ કરો। Brave અને Safari ને બંધ કરી દો। બંને બંધ કરો, Brave અને Safari। Slack અને ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_2_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 97</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_2_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Brave અને Safari બંધ કરો। Brave અને Safari ને બંધ કરી દો। બંને બંધ કરો, Brave અને Safari। Slack અને ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_2_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 98</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_2_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Brave અને Safari બંધ કરો। Brave અને Safari ને બંધ કરી દો। બંને બંધ કરો, Brave અને Safari। Slack અને ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_2_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 99</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_2_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Brave અને Safari બંધ કરો। Brave અને Safari ને બંધ કરી દો। બંને બંધ કરો, Brave અને Safari। Slack અને ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_2_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="5.25">
+            <div class="audio-container">
+                <p><strong>Part 100</strong> (5.25s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_2_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: Brave અને Safari બંધ કરો। Brave અને Safari ને બંધ કરી દો। બંને બંધ કરો, Brave અને Safari। Slack અને ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_3_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 101</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_3_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પંદર મિનિટનો ટાઈમર સેટ કરો। સાડા ચાર વાગ્યે મને યાદ અપાવજો। ત્રેવીસમી તારીખે મારા કેલેન્ડરમાં શું છે...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_3_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 102</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_3_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પંદર મિનિટનો ટાઈમર સેટ કરો। સાડા ચાર વાગ્યે મને યાદ અપાવજો। ત્રેવીસમી તારીખે મારા કેલેન્ડરમાં શું છે...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_3_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 103</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_3_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પંદર મિનિટનો ટાઈમર સેટ કરો। સાડા ચાર વાગ્યે મને યાદ અપાવજો। ત્રેવીસમી તારીખે મારા કેલેન્ડરમાં શું છે...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_3_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 104</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_3_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પંદર મિનિટનો ટાઈમર સેટ કરો। સાડા ચાર વાગ્યે મને યાદ અપાવજો। ત્રેવીસમી તારીખે મારા કેલેન્ડરમાં શું છે...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_3_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 105</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_3_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પંદર મિનિટનો ટાઈમર સેટ કરો। સાડા ચાર વાગ્યે મને યાદ અપાવજો। ત્રેવીસમી તારીખે મારા કેલેન્ડરમાં શું છે...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_3_full_part06.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 106</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_3_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પંદર મિનિટનો ટાઈમર સેટ કરો। સાડા ચાર વાગ્યે મને યાદ અપાવજો। ત્રેવીસમી તારીખે મારા કેલેન્ડરમાં શું છે...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_3_full_part07.wav" data-lang="gu" data-speaker="amaan" data-dur="3.17">
+            <div class="audio-container">
+                <p><strong>Part 107</strong> (3.17s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_3_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પંદર મિનિટનો ટાઈમર સેટ કરો। સાડા ચાર વાગ્યે મને યાદ અપાવજો। ત્રેવીસમી તારીખે મારા કેલેન્ડરમાં શું છે...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_4_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 108</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_4_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પાણી। ઘર। ચા। રસ્તો। ખુશી। વિદ્યાર્થી। ગાડી। બજાર। આકાશ। મોબાઇલ। ખેડૂત ખેતરમાં હળ ચલાવે છે। ઘડિયાળમા...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_4_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 109</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_4_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પાણી। ઘર। ચા। રસ્તો। ખુશી। વિદ્યાર્થી। ગાડી। બજાર। આકાશ। મોબાઇલ। ખેડૂત ખેતરમાં હળ ચલાવે છે। ઘડિયાળમા...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_4_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 110</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_4_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પાણી। ઘર। ચા। રસ્તો। ખુશી। વિદ્યાર્થી। ગાડી। બજાર। આકાશ। મોબાઇલ। ખેડૂત ખેતરમાં હળ ચલાવે છે। ઘડિયાળમા...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_4_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 111</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_4_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પાણી। ઘર। ચા। રસ્તો। ખુશી। વિદ્યાર્થી। ગાડી। બજાર। આકાશ। મોબાઇલ। ખેડૂત ખેતરમાં હળ ચલાવે છે। ઘડિયાળમા...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_4_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="6.46">
+            <div class="audio-container">
+                <p><strong>Part 112</strong> (6.46s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_4_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: પાણી। ઘર। ચા। રસ્તો। ખુશી। વિદ્યાર્થી। ગાડી। બજાર। આકાશ। મોબાઇલ। ખેડૂત ખેતરમાં હળ ચલાવે છે। ઘડિયાળમા...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_5_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 113</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_5_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: ફોન નંબર: ૯૮૨૫૦ ૧૨૩૪૫। ફોન નંબર: ૭૮૭૮૬ ૫૪૩૨૧। OTP: ૪૮૨૯૧૭। OTP: ૦૭૩૫૬૧। પિન કોડ: ૩૮૦૦૦૧। પિન કોડ: ૩૯...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_5_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 114</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_5_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: ફોન નંબર: ૯૮૨૫૦ ૧૨૩૪૫। ફોન નંબર: ૭૮૭૮૬ ૫૪૩૨૧। OTP: ૪૮૨૯૧૭। OTP: ૦૭૩૫૬૧। પિન કોડ: ૩૮૦૦૦૧। પિન કોડ: ૩૯...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_5_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 115</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_5_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: ફોન નંબર: ૯૮૨૫૦ ૧૨૩૪૫। ફોન નંબર: ૭૮૭૮૬ ૫૪૩૨૧। OTP: ૪૮૨૯૧૭। OTP: ૦૭૩૫૬૧। પિન કોડ: ૩૮૦૦૦૧। પિન કોડ: ૩૯...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_5_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 116</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_5_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: ફોન નંબર: ૯૮૨૫૦ ૧૨૩૪૫। ફોન નંબર: ૭૮૭૮૬ ૫૪૩૨૧। OTP: ૪૮૨૯૧૭। OTP: ૦૭૩૫૬૧। પિન કોડ: ૩૮૦૦૦૧। પિન કોડ: ૩૯...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_5_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="1.47">
+            <div class="audio-container">
+                <p><strong>Part 117</strong> (1.47s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_5_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: ફોન નંબર: ૯૮૨૫૦ ૧૨૩૪૫। ફોન નંબર: ૭૮૭૮૬ ૫૪૩૨૧। OTP: ૪૮૨૯૧૭। OTP: ૦૭૩૫૬૧। પિન કોડ: ૩૮૦૦૦૧। પિન કોડ: ૩૯...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_6_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 118</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_6_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારું બિલ એક હજાર આઠસો પચાસ રૂપિયા આવ્યું। તેણે સાડા બાર લાખ રૂપિયામાં જમીન વેચી। આજે તારીખ પંદર ઑગસ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_6_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 119</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_6_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારું બિલ એક હજાર આઠસો પચાસ રૂપિયા આવ્યું। તેણે સાડા બાર લાખ રૂપિયામાં જમીન વેચી। આજે તારીખ પંદર ઑગસ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_6_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 120</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_6_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારું બિલ એક હજાર આઠસો પચાસ રૂપિયા આવ્યું। તેણે સાડા બાર લાખ રૂપિયામાં જમીન વેચી। આજે તારીખ પંદર ઑગસ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_6_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 121</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_6_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારું બિલ એક હજાર આઠસો પચાસ રૂપિયા આવ્યું। તેણે સાડા બાર લાખ રૂપિયામાં જમીન વેચી। આજે તારીખ પંદર ઑગસ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_6_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 122</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_6_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારું બિલ એક હજાર આઠસો પચાસ રૂપિયા આવ્યું। તેણે સાડા બાર લાખ રૂપિયામાં જમીન વેચી। આજે તારીખ પંદર ઑગસ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_6_full_part06.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 123</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_6_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારું બિલ એક હજાર આઠસો પચાસ રૂપિયા આવ્યું। તેણે સાડા બાર લાખ રૂપિયામાં જમીન વેચી। આજે તારીખ પંદર ઑગસ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_6_full_part07.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 124</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_6_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારું બિલ એક હજાર આઠસો પચાસ રૂપિયા આવ્યું। તેણે સાડા બાર લાખ રૂપિયામાં જમીન વેચી। આજે તારીખ પંદર ઑગસ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_6_full_part08.wav" data-lang="gu" data-speaker="amaan" data-dur="2.26">
+            <div class="audio-container">
+                <p><strong>Part 125</strong> (2.26s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_6_full_part08.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: મારું બિલ એક હજાર આઠસો પચાસ રૂપિયા આવ્યું। તેણે સાડા બાર લાખ રૂપિયામાં જમીન વેચી। આજે તારીખ પંદર ઑગસ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_8_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 126</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_8_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કેમ છો? મજામાં? આજે જમવામાં શું બનાવ્યું છે? ચાલો, ચા પીવા જઈએ। હું થોડો મોડો પડીશ, તમે જમી લેજો। આજ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_8_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 127</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_8_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કેમ છો? મજામાં? આજે જમવામાં શું બનાવ્યું છે? ચાલો, ચા પીવા જઈએ। હું થોડો મોડો પડીશ, તમે જમી લેજો। આજ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_8_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 128</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_8_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કેમ છો? મજામાં? આજે જમવામાં શું બનાવ્યું છે? ચાલો, ચા પીવા જઈએ। હું થોડો મોડો પડીશ, તમે જમી લેજો। આજ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_8_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 129</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_8_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કેમ છો? મજામાં? આજે જમવામાં શું બનાવ્યું છે? ચાલો, ચા પીવા જઈએ। હું થોડો મોડો પડીશ, તમે જમી લેજો। આજ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_8_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 130</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_8_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કેમ છો? મજામાં? આજે જમવામાં શું બનાવ્યું છે? ચાલો, ચા પીવા જઈએ। હું થોડો મોડો પડીશ, તમે જમી લેજો। આજ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_8_full_part06.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 131</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_8_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કેમ છો? મજામાં? આજે જમવામાં શું બનાવ્યું છે? ચાલો, ચા પીવા જઈએ। હું થોડો મોડો પડીશ, તમે જમી લેજો। આજ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_8_full_part07.wav" data-lang="gu" data-speaker="amaan" data-dur="5.06">
+            <div class="audio-container">
+                <p><strong>Part 132</strong> (5.06s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_8_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કેમ છો? મજામાં? આજે જમવામાં શું બનાવ્યું છે? ચાલો, ચા પીવા જઈએ। હું થોડો મોડો પડીશ, તમે જમી લેજો। આજ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_9_full_part01.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 133</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_9_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કાચો પાપડ પાકો પાપડ। છ છાબડીમાં છ છાલવાળાં છત્રી। ચંદુના ચાચાએ ચાંદીની ચમચીથી ચટણી ચાખી। ગધેડાએ ગાજર...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_9_full_part02.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 134</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_9_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કાચો પાપડ પાકો પાપડ। છ છાબડીમાં છ છાલવાળાં છત્રી। ચંદુના ચાચાએ ચાંદીની ચમચીથી ચટણી ચાખી। ગધેડાએ ગાજર...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_9_full_part03.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 135</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_9_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કાચો પાપડ પાકો પાપડ। છ છાબડીમાં છ છાલવાળાં છત્રી। ચંદુના ચાચાએ ચાંદીની ચમચીથી ચટણી ચાખી। ગધેડાએ ગાજર...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_9_full_part04.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 136</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_9_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કાચો પાપડ પાકો પાપડ। છ છાબડીમાં છ છાલવાળાં છત્રી। ચંદુના ચાચાએ ચાંદીની ચમચીથી ચટણી ચાખી। ગધેડાએ ગાજર...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_9_full_part05.wav" data-lang="gu" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 137</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_9_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કાચો પાપડ પાકો પાપડ। છ છાબડીમાં છ છાલવાળાં છત્રી। ચંદુના ચાચાએ ચાંદીની ચમચીથી ચટણી ચાખી। ગધેડાએ ગાજર...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_guj_9_full_part06.wav" data-lang="gu" data-speaker="amaan" data-dur="1.78">
+            <div class="audio-container">
+                <p><strong>Part 138</strong> (1.78s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_guj_9_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: કાચો પાપડ પાકો પાપડ। છ છાબડીમાં છ છાલવાળાં છત્રી। ચંદુના ચાચાએ ચાંદીની ચમચીથી ચટણી ચાખી। ગધેડાએ ગાજર...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amman_hin_5_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 139</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amman_hin_5_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: कमरे की खिड़की खोलो। रसोई की लाइट चालू करो। पंखे की speed तीन पर करो। अगला वीडियो चलाओ। आवाज़ थोड़ा ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amman_hin_5_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 140</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amman_hin_5_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: कमरे की खिड़की खोलो। रसोई की लाइट चालू करो। पंखे की speed तीन पर करो। अगला वीडियो चलाओ। आवाज़ थोड़ा ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amman_hin_5_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 141</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amman_hin_5_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: कमरे की खिड़की खोलो। रसोई की लाइट चालू करो। पंखे की speed तीन पर करो। अगला वीडियो चलाओ। आवाज़ थोड़ा ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amman_hin_5_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 142</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amman_hin_5_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: कमरे की खिड़की खोलो। रसोई की लाइट चालू करो। पंखे की speed तीन पर करो। अगला वीडियो चलाओ। आवाज़ थोड़ा ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amman_hin_5_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 143</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amman_hin_5_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: कमरे की खिड़की खोलो। रसोई की लाइट चालू करो। पंखे की speed तीन पर करो। अगला वीडियो चलाओ। आवाज़ थोड़ा ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/Amman_hin_5_full_part06.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 144</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/Amman_hin_5_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: कमरे की खिड़की खोलो। रसोई की लाइट चालू करो। पंखे की speed तीन पर करो। अगला वीडियो चलाओ। आवाज़ थोड़ा ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin _7 2_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 145</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin _7 2_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: चंदा चमका, चाँदनी छाई, चिड़िया चहकी। पका पपीता, कच्चा पपीता, पपीते का पक्का पेड़। टेढ़ी टोपी पहनकर ट...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin _7 2_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 146</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin _7 2_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: चंदा चमका, चाँदनी छाई, चिड़िया चहकी। पका पपीता, कच्चा पपीता, पपीते का पक्का पेड़। टेढ़ी टोपी पहनकर ट...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin _7 2_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 147</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin _7 2_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: चंदा चमका, चाँदनी छाई, चिड़िया चहकी। पका पपीता, कच्चा पपीता, पपीते का पक्का पेड़। टेढ़ी टोपी पहनकर ट...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin _7 2_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 148</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin _7 2_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: चंदा चमका, चाँदनी छाई, चिड़िया चहकी। पका पपीता, कच्चा पपीता, पपीते का पक्का पेड़। टेढ़ी टोपी पहनकर ट...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin _7 2_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 149</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin _7 2_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: चंदा चमका, चाँदनी छाई, चिड़िया चहकी। पका पपीता, कच्चा पपीता, पपीते का पक्का पेड़। टेढ़ी टोपी पहनकर ट...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin _7 2_full_part06.wav" data-lang="hi" data-speaker="amaan" data-dur="4.05">
+            <div class="audio-container">
+                <p><strong>Part 150</strong> (4.05s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin _7 2_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: चंदा चमका, चाँदनी छाई, चिड़िया चहकी। पका पपीता, कच्चा पपीता, पपीते का पक्का पेड़। टेढ़ी टोपी पहनकर ट...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_10_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 151</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_10_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९८२५० १२३४५। फोन नंबर: ७८७८६ ५४३२१। ओटीपी: ४८२९१७। ओटीपी: ०७३५६१। पिन कोड: ३८०००१। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_10_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 152</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_10_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९८२५० १२३४५। फोन नंबर: ७८७८६ ५४३२१। ओटीपी: ४८२९१७। ओटीपी: ०७३५६१। पिन कोड: ३८०००१। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_10_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 153</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_10_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९८२५० १२३४५। फोन नंबर: ७८७८६ ५४३२१। ओटीपी: ४८२९१७। ओटीपी: ०७३५६१। पिन कोड: ३८०००१। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_10_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 154</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_10_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९८२५० १२३४५। फोन नंबर: ७८७८६ ५४३२१। ओटीपी: ४८२९१७। ओटीपी: ०७३५६१। पिन कोड: ३८०००१। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_10_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 155</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_10_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९८२५० १२३४५। फोन नंबर: ७८७८६ ५४३२१। ओटीपी: ४८२९१७। ओटीपी: ०७३५६१। पिन कोड: ३८०००१। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_10_full_part06.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 156</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_10_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९८२५० १२३४५। फोन नंबर: ७८७८६ ५४३२१। ओटीपी: ४८२९१७। ओटीपी: ०७३५६१। पिन कोड: ३८०००१। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_10_full_part07.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 157</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_10_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९८२५० १२३४५। फोन नंबर: ७८७८६ ५४३२१। ओटीपी: ४८२९१७। ओटीपी: ०७३५६१। पिन कोड: ३८०००१। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_10_full_part08.wav" data-lang="hi" data-speaker="amaan" data-dur="4.21">
+            <div class="audio-container">
+                <p><strong>Part 158</strong> (4.21s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_10_full_part08.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९८२५० १२३४५। फोन नंबर: ७८७८६ ५४३२१। ओटीपी: ४८२९१७। ओटीपी: ०७३५६१। पिन कोड: ३८०००१। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_11_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 159</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_11_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम इस साल जयपुर जा रहे हैं। मुंबई से पुणे तक की टिकट बुक करो। वाराणसी की साड़ियाँ बहुत प्रसिद्ध हैं।...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_11_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 160</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_11_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम इस साल जयपुर जा रहे हैं। मुंबई से पुणे तक की टिकट बुक करो। वाराणसी की साड़ियाँ बहुत प्रसिद्ध हैं।...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_11_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 161</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_11_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम इस साल जयपुर जा रहे हैं। मुंबई से पुणे तक की टिकट बुक करो। वाराणसी की साड़ियाँ बहुत प्रसिद्ध हैं।...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_11_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 162</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_11_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम इस साल जयपुर जा रहे हैं। मुंबई से पुणे तक की टिकट बुक करो। वाराणसी की साड़ियाँ बहुत प्रसिद्ध हैं।...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_11_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 163</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_11_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम इस साल जयपुर जा रहे हैं। मुंबई से पुणे तक की टिकट बुक करो। वाराणसी की साड़ियाँ बहुत प्रसिद्ध हैं।...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_11_full_part06.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 164</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_11_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम इस साल जयपुर जा रहे हैं। मुंबई से पुणे तक की टिकट बुक करो। वाराणसी की साड़ियाँ बहुत प्रसिद्ध हैं।...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_11_full_part07.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 165</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_11_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम इस साल जयपुर जा रहे हैं। मुंबई से पुणे तक की टिकट बुक करो। वाराणसी की साड़ियाँ बहुत प्रसिद्ध हैं।...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_12_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 166</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_12_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पंखा चालू करो। बेडरूम की लाइट बंद करो। एसी का तापमान छब्बीस डिग्री करो। अगला गाना बजाओ। आवाज़ कम करो...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_12_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 167</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_12_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पंखा चालू करो। बेडरूम की लाइट बंद करो। एसी का तापमान छब्बीस डिग्री करो। अगला गाना बजाओ। आवाज़ कम करो...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_12_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 168</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_12_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पंखा चालू करो। बेडरूम की लाइट बंद करो। एसी का तापमान छब्बीस डिग्री करो। अगला गाना बजाओ। आवाज़ कम करो...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_12_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 169</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_12_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पंखा चालू करो। बेडरूम की लाइट बंद करो। एसी का तापमान छब्बीस डिग्री करो। अगला गाना बजाओ। आवाज़ कम करो...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_12_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 170</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_12_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पंखा चालू करो। बेडरूम की लाइट बंद करो। एसी का तापमान छब्बीस डिग्री करो। अगला गाना बजाओ। आवाज़ कम करो...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_12_full_part06.wav" data-lang="hi" data-speaker="amaan" data-dur="6.29">
+            <div class="audio-container">
+                <p><strong>Part 171</strong> (6.29s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_12_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पंखा चालू करो। बेडरूम की लाइट बंद करो। एसी का तापमान छब्बीस डिग्री करो। अगला गाना बजाओ। आवाज़ कम करो...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_8_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 172</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_8_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: तुम यहाँ हो! तुम यहाँ हो? तुम यहाँ हो। अरे वाह, तुमने बहुत अच्छा किया! मुझे यह बात बिल्कुल अच्छी नही...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_8_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 173</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_8_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: तुम यहाँ हो! तुम यहाँ हो? तुम यहाँ हो। अरे वाह, तुमने बहुत अच्छा किया! मुझे यह बात बिल्कुल अच्छी नही...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_8_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 174</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_8_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: तुम यहाँ हो! तुम यहाँ हो? तुम यहाँ हो। अरे वाह, तुमने बहुत अच्छा किया! मुझे यह बात बिल्कुल अच्छी नही...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_8_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 175</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_8_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: तुम यहाँ हो! तुम यहाँ हो? तुम यहाँ हो। अरे वाह, तुमने बहुत अच्छा किया! मुझे यह बात बिल्कुल अच्छी नही...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_8_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 176</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_8_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: तुम यहाँ हो! तुम यहाँ हो? तुम यहाँ हो। अरे वाह, तुमने बहुत अच्छा किया! मुझे यह बात बिल्कुल अच्छी नही...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_8_full_part06.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 177</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_8_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: तुम यहाँ हो! तुम यहाँ हो? तुम यहाँ हो। अरे वाह, तुमने बहुत अच्छा किया! मुझे यह बात बिल्कुल अच्छी नही...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hin_8_full_part07.wav" data-lang="hi" data-speaker="amaan" data-dur="4.13">
+            <div class="audio-container">
+                <p><strong>Part 178</strong> (4.13s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hin_8_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: तुम यहाँ हो! तुम यहाँ हो? तुम यहाँ हो। अरे वाह, तुमने बहुत अच्छा किया! मुझे यह बात बिल्कुल अच्छी नही...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_1_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 179</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_1_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: किताब। कमरा। बारिश। सुबह। दोस्त। शिक्षक। स्टेशन। नदी। पहाड़। तस्वीर। खाना। दुकान। पक्षी सुबह पेड़ पर...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_1_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 180</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_1_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: किताब। कमरा। बारिश। सुबह। दोस्त। शिक्षक। स्टेशन। नदी। पहाड़। तस्वीर। खाना। दुकान। पक्षी सुबह पेड़ पर...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_1_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 181</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_1_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: किताब। कमरा। बारिश। सुबह। दोस्त। शिक्षक। स्टेशन। नदी। पहाड़। तस्वीर। खाना। दुकान। पक्षी सुबह पेड़ पर...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_1_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 182</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_1_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: किताब। कमरा। बारिश। सुबह। दोस्त। शिक्षक। स्टेशन। नदी। पहाड़। तस्वीर। खाना। दुकान। पक्षी सुबह पेड़ पर...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_1_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 183</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_1_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: किताब। कमरा। बारिश। सुबह। दोस्त। शिक्षक। स्टेशन। नदी। पहाड़। तस्वीर। खाना। दुकान। पक्षी सुबह पेड़ पर...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_1_full_part06.wav" data-lang="hi" data-speaker="amaan" data-dur="7.25">
+            <div class="audio-container">
+                <p><strong>Part 184</strong> (7.25s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_1_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: किताब। कमरा। बारिश। सुबह। दोस्त। शिक्षक। स्टेशन। नदी। पहाड़। तस्वीर। खाना। दुकान। पक्षी सुबह पेड़ पर...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_3_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 185</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_3_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: इस महीने मेरा बिजली का बिल दो हजार तीन सौ बीस रुपये आया। उसने नई बाइक पचहत्तर हजार रुपये में खरीदी। ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_3_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 186</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_3_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: इस महीने मेरा बिजली का बिल दो हजार तीन सौ बीस रुपये आया। उसने नई बाइक पचहत्तर हजार रुपये में खरीदी। ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_3_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 187</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_3_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: इस महीने मेरा बिजली का बिल दो हजार तीन सौ बीस रुपये आया। उसने नई बाइक पचहत्तर हजार रुपये में खरीदी। ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_3_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 188</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_3_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: इस महीने मेरा बिजली का बिल दो हजार तीन सौ बीस रुपये आया। उसने नई बाइक पचहत्तर हजार रुपये में खरीदी। ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/amaan_hindi_3_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="6.43">
+            <div class="audio-container">
+                <p><strong>Part 189</strong> (6.43s)</p>
+                <audio controls src="/data/processed/chunks/manual/amaan_hindi_3_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: इस महीने मेरा बिजली का बिल दो हजार तीन सौ बीस रुपये आया। उसने नई बाइक पचहत्तर हजार रुपये में खरीदी। ...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_2_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 190</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_2_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९७६४१ ८२५३०। फोन नंबर: ८८३२७ ४१६९५। ओटीपी: ६३९२४८। ओटीपी: ०५८३१७। पिन कोड: ४०००७६। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_2_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 191</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_2_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९७६४१ ८२५३०। फोन नंबर: ८८३२७ ४१६९५। ओटीपी: ६३९२४८। ओटीपी: ०५८३१७। पिन कोड: ४०००७६। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_2_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 192</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_2_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९७६४१ ८२५३०। फोन नंबर: ८८३२७ ४१६९५। ओटीपी: ६३९२४८। ओटीपी: ०५८३१७। पिन कोड: ४०००७६। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_2_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 193</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_2_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९७६४१ ८२५३०। फोन नंबर: ८८३२७ ४१६९५। ओटीपी: ६३९२४८। ओटीपी: ०५८३१७। पिन कोड: ४०००७६। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_2_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="2.98">
+            <div class="audio-container">
+                <p><strong>Part 194</strong> (2.98s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_2_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: फोन नंबर: ९७६४१ ८२५३०। फोन नंबर: ८८३२७ ४१६९५। ओटीपी: ६३९२४८। ओटीपी: ०५८३१७। पिन कोड: ४०००७६। पिन कोड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_4_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 195</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_4_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम अगले महीने अहमदाबाद जा रहे हैं। नागपुर से भोपाल की ट्रेन सुबह निकलती है। उदयपुर की झीलें बहुत सुं...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_4_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 196</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_4_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम अगले महीने अहमदाबाद जा रहे हैं। नागपुर से भोपाल की ट्रेन सुबह निकलती है। उदयपुर की झीलें बहुत सुं...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_4_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 197</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_4_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम अगले महीने अहमदाबाद जा रहे हैं। नागपुर से भोपाल की ट्रेन सुबह निकलती है। उदयपुर की झीलें बहुत सुं...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_4_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 198</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_4_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम अगले महीने अहमदाबाद जा रहे हैं। नागपुर से भोपाल की ट्रेन सुबह निकलती है। उदयपुर की झीलें बहुत सुं...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_4_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 199</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_4_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम अगले महीने अहमदाबाद जा रहे हैं। नागपुर से भोपाल की ट्रेन सुबह निकलती है। उदयपुर की झीलें बहुत सुं...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_4_full_part06.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 200</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_4_full_part06.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम अगले महीने अहमदाबाद जा रहे हैं। नागपुर से भोपाल की ट्रेन सुबह निकलती है। उदयपुर की झीलें बहुत सुं...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_4_full_part07.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 201</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_4_full_part07.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम अगले महीने अहमदाबाद जा रहे हैं। नागपुर से भोपाल की ट्रेन सुबह निकलती है। उदयपुर की झीलें बहुत सुं...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_4_full_part08.wav" data-lang="hi" data-speaker="amaan" data-dur="3.57">
+            <div class="audio-container">
+                <p><strong>Part 202</strong> (3.57s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_4_full_part08.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: हम अगले महीने अहमदाबाद जा रहे हैं। नागपुर से भोपाल की ट्रेन सुबह निकलती है। उदयपुर की झीलें बहुत सुं...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_9_full_part01.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 203</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_9_full_part01.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पानी। घर। चाय। रास्ता। खुशी। विद्यार्थी। गाड़ी। बाजार। आकाश। मोबाइल। किसान खेत में हल चला रहा है। घड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_9_full_part02.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 204</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_9_full_part02.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पानी। घर। चाय। रास्ता। खुशी। विद्यार्थी। गाड़ी। बाजार। आकाश। मोबाइल। किसान खेत में हल चला रहा है। घड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_9_full_part03.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 205</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_9_full_part03.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पानी। घर। चाय। रास्ता। खुशी। विद्यार्थी। गाड़ी। बाजार। आकाश। मोबाइल। किसान खेत में हल चला रहा है। घड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_9_full_part04.wav" data-lang="hi" data-speaker="amaan" data-dur="10.0">
+            <div class="audio-container">
+                <p><strong>Part 206</strong> (10.0s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_9_full_part04.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पानी। घर। चाय। रास्ता। खुशी। विद्यार्थी। गाड़ी। बाजार। आकाश। मोबाइल। किसान खेत में हल चला रहा है। घड...</div>
+            </div>
+        </div>
+        
+        <div class="card" data-path="data/processed/chunks/manual/aman_hin_9_full_part05.wav" data-lang="hi" data-speaker="amaan" data-dur="3.74">
+            <div class="audio-container">
+                <p><strong>Part 207</strong> (3.74s)</p>
+                <audio controls src="/data/processed/chunks/manual/aman_hin_9_full_part05.wav"></audio>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="Type what you hear here..."></textarea>
+                <div class="hint">Original Full Text: पानी। घर। चाय। रास्ता। खुशी। विद्यार्थी। गाड़ी। बाजार। आकाश। मोबाइल। किसान खेत में हल चला रहा है। घड...</div>
+            </div>
+        </div>
+        
+    </div>
+    <button class="export" onclick="exportCSV()">💾 Save & Download CSV</button>
+
+    <script>
+        function exportCSV() {
+            let csvContent = "audio_path,transcript,language,speaker,duration\n";
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                const path = card.getAttribute('data-path');
+                const lang = card.getAttribute('data-lang');
+                const speaker = card.getAttribute('data-speaker');
+                const dur = card.getAttribute('data-dur');
+                let text = card.querySelector('textarea').value.trim();
+                
+                // Escape quotes
+                text = text.replace(/"/g, '""');
+                
+                if(text !== "") {
+                    csvContent += `${path},"${text}",${lang},${speaker},${dur}\n`;
+                }
+            });
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "manual_annotations.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

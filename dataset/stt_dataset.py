@@ -89,10 +89,25 @@ class STTDataset(Dataset):
         audio_path = sample["audio_path"]
         transcript = sample["transcript"]
 
-        # Extract 80-channel Log-Mel spectrogram (shape: 80, time_steps)
-        mel = self.feature_extractor.extract_from_file(audio_path)
+        import soundfile as sf
+        import numpy as np
+        waveform, sample_rate = sf.read(audio_path, dtype="float32")
 
         if self.augment:
+            # 1. Background Noise Injection (simulate fan/room noise)
+            if np.random.rand() > 0.3:
+                noise = np.random.normal(0, 0.002, len(waveform)).astype(np.float32)
+                waveform = waveform + noise
+            
+            # 2. Volume Perturbation (simulate mic distance)
+            if np.random.rand() > 0.3:
+                waveform = waveform * np.random.uniform(0.5, 1.5)
+
+        # Extract 80-channel Log-Mel spectrogram (shape: 80, time_steps)
+        mel = self.feature_extractor.compute_mel_spectrogram(waveform, sample_rate=sample_rate)
+
+        if self.augment:
+            # 3. SpecAugment (Hide parts of audio)
             mel = self.feature_extractor.apply_spec_augment(mel)
 
         # Transpose to (time_steps, n_mels) which is standard for acoustic models
