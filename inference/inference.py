@@ -59,10 +59,15 @@ class STTInference:
 
         # Auto-select best available model if none provided
         if model_path is None:
-            if Path("checkpoints/stt_w2v/best").exists():
+            env_ckpt = os.environ.get("STT_CHECKPOINT_DIR")
+            if env_ckpt and Path(env_ckpt).exists():
+                model_path = env_ckpt
+            elif Path("checkpoints/stt_w2v/best").exists():
                 model_path = "checkpoints/stt_w2v/best"
-            else:
+            elif Path("checkpoints/best_model.pt").exists():
                 model_path = "checkpoints/best_model.pt"
+            else:
+                model_path = "checkpoints/stt_w2v/best"
 
         self.model_path = Path(model_path)
         self.is_w2v = self.model_path.is_dir() and (
@@ -75,6 +80,10 @@ class STTInference:
         if vocab_path is None:
             if self.is_w2v and (self.model_path / "vocab.json").exists():
                 vocab_path = self.model_path / "vocab.json"
+            elif os.environ.get("STT_CHECKPOINT_DIR") and (Path(os.environ["STT_CHECKPOINT_DIR"]) / "vocab.json").exists():
+                vocab_path = Path(os.environ["STT_CHECKPOINT_DIR"]) / "vocab.json"
+            elif Path("tokenizer/vocab.json").exists():
+                vocab_path = "tokenizer/vocab.json"
             else:
                 vocab_path = "tokenizer/vocab.json"
 
@@ -97,8 +106,27 @@ class STTInference:
         # 3. Optional KenLM Beam Search Decoder (build two: one for files, one for mic)
         self.lm_decoder = None
         self.lm_decoder_mic = None
-        lm_path = Path("data/lm/multilingual_3gram.arpa")
-        unigrams_path = Path("data/lm/unigrams.txt")
+
+        env_lm = os.environ.get("STT_LM_PATH")
+        if env_lm and Path(env_lm).exists():
+            lm_path = Path(env_lm)
+        elif self.is_w2v and (self.model_path / "multilingual_3gram.arpa").exists():
+            lm_path = self.model_path / "multilingual_3gram.arpa"
+        elif Path("data/lm/multilingual_3gram.arpa").exists():
+            lm_path = Path("data/lm/multilingual_3gram.arpa")
+        else:
+            lm_path = Path("data/lm/multilingual_3gram.arpa")
+
+        env_unigrams = os.environ.get("STT_UNIGRAMS_PATH")
+        if env_unigrams and Path(env_unigrams).exists():
+            unigrams_path = Path(env_unigrams)
+        elif self.is_w2v and (self.model_path / "unigrams.txt").exists():
+            unigrams_path = self.model_path / "unigrams.txt"
+        elif Path("data/lm/unigrams.txt").exists():
+            unigrams_path = Path("data/lm/unigrams.txt")
+        else:
+            unigrams_path = Path("data/lm/unigrams.txt")
+
         if lm_path.exists() and self.is_w2v:
             try:
                 from pyctcdecode import build_ctcdecoder
@@ -135,7 +163,8 @@ class STTInference:
                 print(f"[!] Warning: Could not initialize KenLM decoder: {e}")
 
         # 4. Smart Multilingual Post-Processor & Language-Specific Hotwords
-        self.post_processor = STTPostProcessor("data/lm/unigrams.txt")
+        unigram_file = str(unigrams_path) if unigrams_path.exists() else "data/lm/unigrams.txt"
+        self.post_processor = STTPostProcessor(unigram_file)
         self.gu_hotwords = [
             "નમસ્તે", "ગુજરાતી", "કેમ છો", "આભાર", "ફિલ્મોના", "અભિનેતા", "અરવિંદ", "ત્રિવેદી", "સરકાર", "નમસ્કાર",
             "એસીનું", "તાપમાન", "ડિગ્રી", "કરો", "પંખો", "લાઇટ", "બંધ", "ચાલુ", "ફળ", "તોડે", "ઝાડ", "છોકરાઓ",
